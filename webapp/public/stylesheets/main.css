@@ -9,14 +9,14 @@
 .info {
     position: absolute;
     background-color: white;
-    top: 0px;
+    top: 0;
     width: 200px;
     height: 200px;
     display: none;
     z-index: 1;
 }
 
-.card.bi {
+.bi {
     width: 400px;
 }
 
