@@ -1,4 +1,6 @@
 var path = require('path');
 
-SRC_ROOT = path.join(path.dirname(__filename), 'webapp/src');
-VIEW_ROOT = path.join(path.dirname(__filename), 'webapp/views');
+APP_ROOT = path.dirname(__filename);
+SRC_ROOT = path.join(APP_ROOT, 'webapp/src');
+VIEW_ROOT = path.join(APP_ROOT, 'webapp/views');
+PUBLIC_ROOT = path.join(APP_ROOT, 'webapp/public');

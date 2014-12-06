@@ -11,6 +11,7 @@ var studentsRouter = require(path.join(SRC_ROOT, 'routes/students.js'));
 var app = express();
 app.set('views', VIEW_ROOT);
 app.engine('html', require('ejs').renderFile);
+app.use(express.static(PUBLIC_ROOT));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
