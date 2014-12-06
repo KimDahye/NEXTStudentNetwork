@@ -1,4 +1,5 @@
 .card {
+    background-color: red;
     width: 200px;
     height: 200px;
     position: relative;
@@ -9,14 +10,12 @@
 .info {
     position: absolute;
     top: 0;
-    width: 200px;
-    height: 200px;
     display: none;
     z-index: 1;
 }
 
 .bi {
-    width: 400px;
+    width: 420px;
 }
 
 .profile {
@@ -24,4 +23,16 @@
     top: 0;
     width:100%;
     z-index: 0;
+}
+
+@media (max-width: 440px) {
+    .card {
+        background-color: blue;
+        width: 40%;
+        margin: 5%;
+    }
+    .bi {
+        width: 90%;
+        margin: 5%;
+    }
 }
