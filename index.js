@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('./global.js');
 var info = require('debug')('info:www');
 var app = require('./webapp/src/app.js');
 
