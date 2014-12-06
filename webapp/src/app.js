@@ -18,9 +18,9 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render(err);
+  res.render(err.message);
 });
 
 module.exports = app;
