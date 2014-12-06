@@ -14,7 +14,7 @@ start() {
 	then
 		echo "NodeJS is already running (pid: $pid)"
 	else
-		node $MAIN &		
+		node $MAIN		
 	fi
 	
 	return 0	
