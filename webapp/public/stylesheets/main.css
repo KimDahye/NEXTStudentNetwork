@@ -1,5 +1,12 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+/** {
+    border: 1px solid red !important;
+}*/
+a {
+    color: inherit;
+}
+
 .card {
     /*background-color: red;*/
     width: 200px;
@@ -10,13 +17,21 @@
 }
 
 .info {
-    font-family: 'Nanum Gothic', sans-serif;
+    font: 13px/20px 'Nanum Gothic', sans-serif;
     width: 100%;
     height: 100%;
+    padding: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     display: none;
     z-index: 1;
+}
+
+.moto {
+    margin-top: 1em;
 }
 
 .bi {
