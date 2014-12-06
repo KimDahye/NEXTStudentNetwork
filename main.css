@@ -12,15 +12,17 @@
     top: 0px;
     width: 200px;
     height: 200px;
-    /*vertical-align: middle;*/
     display: none;
     z-index: 1;
 }
 
+.card.bi {
+    width: 400px;
+}
+
 .profile {
     position: absolute;
-    top: 0px;
-    width:200px;
-    height:200px;
+    top: 0;
+    width:100%;
     z-index: 0;
 }
