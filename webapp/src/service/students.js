@@ -27,7 +27,7 @@ exports.getRndProfiles = function (num, callback) {
     imgName: 'test.jpg',
     title: '나무처럼 살고픈 김다혜',
     vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-    movieUrl: 'http://www.youtube.com/v/7vofKraOJcU'
+    movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
   };
 
   var arr = [];
