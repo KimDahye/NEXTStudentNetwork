@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 .card {
-    background-color: red;
+    /*background-color: red;*/
     width: 200px;
     height: 200px;
     position: relative;
@@ -32,7 +32,7 @@
 
 @media (max-width: 440px) {
     .card {
-        background-color: blue;
+        /*background-color: blue;*/
         width: 40%;
         margin: 5%;
     }
