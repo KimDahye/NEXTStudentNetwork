@@ -1,1 +1,28 @@
-/* Stylesheet */
+.card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    float:left;
+    margin: 10px;
+}
+
+.info {
+    position: absolute;
+    background-color: white;
+    top: 0px;
+    width: 200px;
+    height: 200px;
+    display: none;
+    z-index: 1;
+}
+
+.card.bi {
+    width: 400px;
+}
+
+.profile {
+    position: absolute;
+    top: 0;
+    width:100%;
+    z-index: 0;
+}
