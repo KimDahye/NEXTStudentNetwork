@@ -9,6 +9,8 @@ var studentsRouter = require(path.join(SRC_ROOT, 'routes/students.js'));
 
 // Express configuration
 var app = express();
+app.set('views', VIEW_ROOT);
+app.engine('html', require('ejs').renderFile);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -26,7 +28,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render(err.message);
+  res.send(err.message);
 });
 
 module.exports = app;
