@@ -28,6 +28,9 @@ a {
     z-index: 1;
 }
 
+.name {
+    font-weight: bold;
+}
 .motto {
     margin-top: 1em;
 }
