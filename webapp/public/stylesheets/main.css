@@ -33,11 +33,11 @@
 @media (max-width: 440px) {
     .card {
         /*background-color: blue;*/
-        width: 40%;
-        margin: 5%;
+        width: 46%;
+        margin: 2%;
     }
     .bi {
-        width: 90%;
-        margin: 5%;
+        width: 96%;
+        margin: 2%;
     }
 }
