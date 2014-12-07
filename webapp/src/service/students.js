@@ -23,7 +23,20 @@ var database = require(path.join(SRC_ROOT, 'modules/database.js'));
  * @param {Number} num number of student's profiles
  */
 exports.getRndProfiles = function (num, callback) {
-  callback(sampleData.slice(0, num));
+  var query = 'SELECT Stu.stu_name_kor AS nameKor, Stu.stu_name_eng AS nameEng, ' +
+      '  Mjr.mjr_name_kor AS majorKor, Mjr.mjr_name_eng AS majorEng, ' +
+      '  Stu.stu_img_name AS imgName, Stu.stu_title AS title, ' +
+      '  Stu.stu_vision AS vision, Stu.stu_mov_url AS movieUrl ' +
+      'FROM Students AS Stu ' +
+      'JOIN Majors AS Mjr ' +
+      'ON Stu.stu_major = Mjr.mjr_id ' +
+      'ORDER BY rand() ' +
+      'LIMIT ';
+
+  database.query(query + num, function (err, results) {
+    callback(results);
+    callback(sampleData.slice(0, num));
+  });
 };
 
 /**
