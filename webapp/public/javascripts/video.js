@@ -1,37 +1,34 @@
-$(window).on('hashchange', function() {
-	videoModalOn();
-});
+$(window).on('load', videoModal).on('hashchange', videoModal);
 
-$(window).on('load', function() {
+function videoModal() {
+	console.log('@videoModal');
 	if(window.location.hash) {
 		videoModalOn();
 	} else {
 		videoModalOff();
 	}
-});
-
+}
 
 function videoModalOn() {
 	var hash = window.location.hash;
-	console.log('hash:'+hash);	// for debugging
+	console.log('hash:'+hash);
 	if(!hash) {
-		$(".bi").css({backgroundColor: 'white'});	// for debugging
+		console.error('no hash @videoModalOn');
 		videoModalOff();
 		return;
 	}
-	$(".bi").css({backgroundColor: getRandomBGcolor()});	// for debugging
 
 	$("#mask").show();
 	var maskZindex = parseInt($("#mask").css('zIndex'));
 	$("#videoModal").css('zIndex', maskZindex+1);
 	$("#videoModal").show();
-	$(".close").click(videoModalOff);
+	$(".close").on('click',function(){window.location.href='';});
 
 }
 
-function videoModalOff() {
-	console.log('off!');
-	window.location.href='#';
+function videoModalOff(event) {
+	console.log('@videoModalOff:');
+	console.log($(this));
 	$("#videoModal").hide();
 	$("#mask").hide();
 }
