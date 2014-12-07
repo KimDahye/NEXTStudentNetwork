@@ -36,7 +36,7 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 초대해 달라고 요청**하시면 됩니다. 누구든 환영합니다!!
 
 ## APIs
-* [GET /students?num=[Number]] (#get-students-profiles)
+* [GET /students?num=[Number]] (#get-student-profiles)
 
 ## Error response
 		{
