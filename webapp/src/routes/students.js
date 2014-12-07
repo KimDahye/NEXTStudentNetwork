@@ -11,6 +11,7 @@ var responseService = require(path.join(SRC_ROOT, 'service/response.js'));
  * 0 < Number <= 24
  *
  * @Response {Json} Student's profiles
+ * If database has smaller than num, returns available data.
  * { data :
  *    [{
  *        nameKor: String,
@@ -36,7 +37,7 @@ router.get('', function (req, res) {
     if (isNaN(Number(req.query.num)))
       response.errors.push(responseService.errResponse(20, 'num parameter should be a number.'));
     else
-      if (0 < Number(req.query.num) && Number(req.query.num) <= 24)
+      if (0 > Number(req.query.num) || Number(req.query.num) > 24)
         response.errors.push(responseService.errResponse(20, 'num parameter should be 0 < num <= 24.'));
 
   if (response.errors.length != 0) {
