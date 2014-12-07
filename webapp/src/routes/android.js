@@ -1,3 +1,4 @@
+var path = require('path');
 var router = require('express').Router();
 var studentsService = require(path.join(SRC_ROOT, 'service/students.js'));
 
