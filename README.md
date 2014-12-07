@@ -5,7 +5,7 @@
 
 ## 어떻게?
 * motivation page: http://web.wellesley.edu/thenetwork/#
-일단 이 페이지를 거의 똑같이 따라해보는 것인데요... 후버링 했을 때의 내용이 조금 다른 게 포인트라면 포인트입니다. 
+일단 이 페이지를 [거의 똑같이 따라해보는 것](http://125.209.198.141/)인데요... 후버링 했을 때의 내용이 조금 다른 게 포인트라면 포인트입니다.
 
 * 학생들과 교수님, 또 동참하시는 선생님들의 사진을 모티베이션 페이지 처럼 찍는다.
 
@@ -20,4 +20,17 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 * 사진 찍으실 분, 영상찍으실 분 자원 받습니다.
 * 여러분들 소개글을 제가 판 github에 올려주세요.
 
+# Welcome to developers group
+## Developers
+| Role             | Contributors           | Description           |
+|:----------------:| ---------------------- |:--------------------- |
+| Product manager  | KimDahye               |                       |
+| Web engineer     | helloheesu             |                       |
+| Android engineer | Jaebong Lee            |                       |
+| CI, server infra | cocagolau              | Jenkins, ubuntu 12.04 |
+| Data parsing     | cocagolau              | python                |
+| Database         | reaperes, cocagolau    | mysql                 |
+| Server engineer  | reaperes               | node.js server        |
 
+개발에 참여 하실 분들은 **다혜에게 github 계정을 알려주시고**, **developers group 대화방에
+초대해 달라고 요청**하시면 됩니다. 누구든 환연합니다!!
