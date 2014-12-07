@@ -58,10 +58,11 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 
 		Request
 		GET /students?num=[Number]
+		Number parameter should be 0 < Number <= 24.
 
 		Response
 		{
 			data: [{
 				(nameKor, nameEng, majorKor, majorEng, imgName, title, vision, movieUrl)
-			}]
+			}, ... ]
 		}
