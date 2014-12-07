@@ -11,7 +11,11 @@
     padding: 5%;
 }
 a.close {
-    background-color: white;
+    background-color: rgba(255,255,255,0.8);
+    font: 36px/36px sans-serif;
+}
+a.close:hover {
+    color:rgba(0,0,0,0.3);
 }
 #videoModal * {
     position: relative;

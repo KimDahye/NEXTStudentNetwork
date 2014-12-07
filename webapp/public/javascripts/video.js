@@ -18,11 +18,10 @@ function videoModalOn(hash) {
 	resizeVideo();
 	$(window).on('resize',resizeVideo);
 
-	var baseZindex = parseInt($("#videoModal").css('zIndex'));
-	// $("#videoModal").css('zIndex', maskZindex+1);
 	$("#videoModal").show();
 	$(".close").on('click',function(){window.location.href='';});
 
+	$('body').css('overflow', 'hidden');
 }
 
 function insertVideo (videoID) {
