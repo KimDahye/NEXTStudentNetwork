@@ -34,3 +34,33 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 
 개발에 참여 하실 분들은 **다혜에게 github 계정을 알려주시고**, **developers group 대화방에
 초대해 달라고 요청**하시면 됩니다. 누구든 환영합니다!!
+
+## APIs
+* [GET /students?num=[Number]] (#get-students-profiles)
+
+## Error response
+		{
+			'errors': [{
+					'code': 10,
+					'message': 'Error text here.'
+				},
+				...
+			]
+		}
+
+| Code | Text                                | Description                                                           |
+|:----:| ----------------------------------- | --------------------------------------------------------------------- |
+| 10   | Required parameter is not defined   | Should define required parameters                                     |
+| 20   | Parameter is invalid                | Should correct parameter name                                         |
+
+### Get student profiles
+
+		Request
+		GET /students?num=[Number]
+
+		Response
+		{
+			data: [{
+				(nameKor, nameEng, majorKor, majorEng, imgName, title, vision, movieUrl)
+			}]
+		}
