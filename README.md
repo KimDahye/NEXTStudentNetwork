@@ -25,6 +25,7 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 | Role             | Contributors           | Description           |
 |:----------------:| ---------------------- |:--------------------- |
 | Product manager  | KimDahye               |                       |
+| Design           | Shinyoung Park         | Main logo design      |
 | Web engineer     | helloheesu             |                       |
 | Android engineer | Jaebong Lee            |                       |
 | CI, server infra | cocagolau              | Jenkins, ubuntu 12.04 |
