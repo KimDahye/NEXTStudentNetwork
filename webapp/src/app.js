@@ -4,9 +4,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var indexRouter = require(path.join(SRC_ROOT, 'routes/index.js'));
-var studentsRouter = require(path.join(SRC_ROOT, 'routes/students.js'));
-
 // Express configuration
 var app = express();
 app.set('views', VIEW_ROOT);
@@ -17,8 +14,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // routers
+var indexRouter = require(path.join(SRC_ROOT, 'routes/index.js'));
+var studentsRouter = require(path.join(SRC_ROOT, 'routes/students.js'));
+var androidRouter = require(path.join(SRC_ROOT, 'routes/android.js'));
+
 app.use('/', indexRouter);
-app.use('/students/', studentsRouter);
+app.use('/students', studentsRouter);
+app.use('/android', androidRouter);
 
 // Error handling
 app.use(function(req, res, next) {
