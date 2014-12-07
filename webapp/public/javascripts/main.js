@@ -1,9 +1,10 @@
 $(".card").hover(function() {
     //alert("hi");
-    $(this).find(".info").css({display:'block', backgroundColor:getRandomBGcolor()});
+    $(this).find(".info").css({backgroundColor:getRandomBGcolor()});
+    $(this).find(".info").fadeIn("fast");
 }, function() {
     //alert("hello");
-    $(this).find(".info").css({display:'none'});
+    $(this).find(".info").fadeOut("fast");
 });
 
 
