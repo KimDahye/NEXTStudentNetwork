@@ -12,6 +12,7 @@
 #videoModal {
     display: none;
     position: fixed;
+    padding: 5%;
 }
 a.close {
     background-color: white;

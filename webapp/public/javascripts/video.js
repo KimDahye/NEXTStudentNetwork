@@ -21,9 +21,11 @@ function videoModalOn() {
 	var ytAPIscript = document.createElement('iframe');
 	ytAPIscript.src="http://www.youtube.com/embed/"+hash.substr(1);
 	ytAPIscript.id="video";
-	ytAPIscript.width=$(window).width()*0.8;
-	ytAPIscript.height=$(window).height()*0.8;
+	// ytAPIscript.width=$(window).width()*0.8;
+	// ytAPIscript.height=$(window).height()*0.8;
 	$("#videoModal").prepend(ytAPIscript);
+	resizeVideo();
+	$(window).on('resize',resizeVideo);
 
 	$("#mask").show();
 	var maskZindex = parseInt($("#mask").css('zIndex'));
@@ -33,9 +35,16 @@ function videoModalOn() {
 
 }
 
+function resizeVideo() {
+	console.log('resize');
+	$("iframe").attr("width", $(window).width()*0.9);
+	$("iframe").attr("height", $(window).height()*0.9);
+}
+
 function videoModalOff(event) {
 	console.log('@videoModalOff:');
-	console.log($(this));
+	console.log($(this))
+	$(window).off('resize', resizeVideo);
 	$("#videoModal").hide();
 	$("#mask").hide();
 }
