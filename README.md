@@ -38,7 +38,7 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 ## APIs
 * [GET /students?num=[Number]] (#get-student-profiles)
 
-## Error response
+## Error response (status code 400)
 		{
 			'errors': [{
 					'code': 10,
