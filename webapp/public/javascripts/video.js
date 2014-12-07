@@ -18,9 +18,8 @@ function videoModalOn(hash) {
 	resizeVideo();
 	$(window).on('resize',resizeVideo);
 
-	$("#mask").show();
-	var maskZindex = parseInt($("#mask").css('zIndex'));
-	$("#videoModal").css('zIndex', maskZindex+1);
+	var baseZindex = parseInt($("#videoModal").css('zIndex'));
+	// $("#videoModal").css('zIndex', maskZindex+1);
 	$("#videoModal").show();
 	$(".close").on('click',function(){window.location.href='';});
 
@@ -44,5 +43,4 @@ function videoModalOff(event) {
 	console.log($(this));
 	$(window).off('resize', resizeVideo);
 	$("#videoModal").hide();
-	$("#mask").hide();
 }
