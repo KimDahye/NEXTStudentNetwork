@@ -5,11 +5,16 @@ var expect = require('expect.js');
 
 var database = require(path.join(SRC_ROOT, 'modules/database.js'));
 
-describe('Suite one', function() {
-  it('Should be success', function (done) {
-    database.query('SELECT 1', function (err, rows, fields) {
-      if (err) throw err;
+describe('Temporary test', function() {
+  it('Do not care of this test', function (done) {
+    request
+      .get('localhost:3000/students')
+      .query({num: '사'})
+      .end(callback);
+
+    function callback(res) {
+      expect(res.status).equal(200);
       done();
-    });
+    }
   });
 });

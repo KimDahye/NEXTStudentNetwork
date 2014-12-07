@@ -2,9 +2,9 @@ var mysql = require('mysql');
 var connectionPool = mysql.createPool({
   connectionLimit: 4,
   host: 'localhost',
-  user: 'next',
-  password: 'next!!@@##$$',
-  database: 'NEXT'
+  user: 'network_viewer',
+  password: 'viewer',
+  database: 'next_network'
 });
 
 module.exports = connectionPool;

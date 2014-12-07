@@ -11,4 +11,12 @@ describe('Students Service', function() {
       done();
     });
   });
+
+  it('#getRndProfiles should be success', function (done) {
+    var num = 4;
+    studentsService.getRndProfiles(num, function (arr) {
+      expect(arr.length).equal(num);
+      done();
+    });
+  });
 });
