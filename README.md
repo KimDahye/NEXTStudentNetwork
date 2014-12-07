@@ -33,4 +33,4 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 | Server engineer  | reaperes               | node.js server        |
 
 개발에 참여 하실 분들은 **다혜에게 github 계정을 알려주시고**, **developers group 대화방에
-초대해 달라고 요청**하시면 됩니다. 누구든 환연합니다!!
+초대해 달라고 요청**하시면 됩니다. 누구든 환영합니다!!
