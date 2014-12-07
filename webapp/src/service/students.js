@@ -11,6 +11,8 @@ var database = require(path.join(SRC_ROOT, 'modules/database.js'));
  * [{
  *    nameKor: String,
  *    nameEng: String,
+ *    majorKor: String,
+ *    majorEng: String,
  *    imgName: String,
  *    title: String,
  *    vision: String,
@@ -23,7 +25,9 @@ var database = require(path.join(SRC_ROOT, 'modules/database.js'));
 exports.getRndProfiles = function (num, callback) {
   var sampleObj = {
     nameKor: '김다혜',
-    nameEng: 'KimDH',
+    nameEng: 'KimDaHye',
+    majorKor: '웹 서버 전공',
+    majorEng: 'Web server track',
     imgName: 'test.jpg',
     title: '나무처럼 살고픈 김다혜',
     vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
