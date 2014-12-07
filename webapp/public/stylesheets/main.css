@@ -9,10 +9,15 @@ a {
 .card {
     /*background-color: red;*/
     width: 200px;
-    height: 200px;
+    /*height: 200px;*/
     position: relative;
     float:left;
     margin: 10px;
+}
+.card:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
 }
 
 .info {
@@ -25,6 +30,9 @@ a {
     box-sizing: border-box;
     position: absolute;
     top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     display: none;
     z-index: 1;
 }
