@@ -48,7 +48,6 @@ var cachedEase = function() {
 	var ease = bezier(0.25, 0.1, 0.25, 1, 0.01);
 	var cached = {};
 	for (var i = 0; i <= 10000; i++) {
-		if (i % 100 == 0) console.log(i);
 		cached[i] = ease(i / 10000);
 	}
 	return function(t) {

@@ -123,18 +123,9 @@ var run = function(startPoints, endPoints, dt) {
 		for (var i in points) {
 			var point = points[i];
 			var cx = startPoints[i][0] + (endPoints[i][0] - startPoints[i][0]) * ratio; 
-			var cy = startPoints[i][1] + (endPoints[i][1] - startPoints[i][1]) * ratio; 
-			point.setAttribute("ocx", cx);
-			point.setAttribute("ocy", cy);
-			
-			var ortho = (startPoints[i][0] - endPoints[i][0]) / (endPoints[i][1] - startPoints[i][1]);
-			var orthodist = Math.sqrt(ratio - ratio * ratio);
-			var dist = Math.sqrt(Math.pow(startPoints[i][0] - endPoints[i][0], 2) + Math.pow(endPoints[i][1] - startPoints[i][1], 2));
-			var dx = -(endPoints[i][1] - startPoints[i][1]) * orthodist * .5;
-			var dy = -(startPoints[i][0] - endPoints[i][0]) * orthodist * .5;
-			
-			point.setAttribute("cx", cx + dx);
-			point.setAttribute("cy", cy + dy);
+			var cy = startPoints[i][1] + (endPoints[i][1] - startPoints[i][1]) * ratio;
+			point.setAttribute("cx", cx);
+			point.setAttribute("cy", cy);
 			point.setAttribute("r", 4*ratio);
 			point.setAttribute("opacity", progress/dt);
 		}
