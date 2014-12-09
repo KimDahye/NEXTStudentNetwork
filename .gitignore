@@ -2,3 +2,6 @@ node_modules/
 .idea/
 
 *.log
+
+# for Namhoon
+test.js

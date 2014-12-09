@@ -9,7 +9,7 @@ describe('Temporary test', function() {
   it('Do not care of this test', function (done) {
     request
       .get('localhost:3000/students')
-      .query({num: '사'})
+      .query({num: 4, start: 0})
       .end(callback);
 
     function callback(res) {
