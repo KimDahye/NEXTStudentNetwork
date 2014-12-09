@@ -31,17 +31,21 @@ function changeStudent() {
 	var index = Math.floor((Math.random() * cards.length));
 	console.log(index);
 	var card = cards[index];
-	var test = data.shift();
-	$(card).parent().attr('href', '#'+test.movieUrl);
-	$(card).find(".name").text(test.nameKor);
-	$(card).find(".major").text(test.majorKor);
-	$(card).find(".motto").text(test.vision);
-	$(card).find(".profile")
-		.attr('src', test.imgName)
-		.attr('alt', test.nameEng);
+	var newData = data.shift();
+	flip(card, newData.imgName);
 }
 
-function checkDataRemaining (argument) {
+function flip(card, imgsrc) {
+	$(card).find(".info").remove();
+	$(card).find(".profile").addClass("front");
+	console.log($(card).find(".front"));
+	$("<img />").insertAfter($(card).find(".front"))
+		.addClass("back")
+		.attr("src", imgsrc);
+	$(card).addClass("flipper");
+}
+
+function checkDataRemaining() {
 	console.log("@checkDataRemaining");
 	if(data.length < leastNum) {
 		requestMoreStudent();

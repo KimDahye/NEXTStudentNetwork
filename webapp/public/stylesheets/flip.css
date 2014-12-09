@@ -1,0 +1,46 @@
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+}
+
+.front, .back, .flipper {
+	-webkittransform-style: preserve-3d;
+	-moztransform-style: preserve-3d;
+	-otransform-style: preserve-3d;
+	-mstransform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.card_container {
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-o-perspective: 1000px;
+	-ms-perspective: 1000px;
+	perspective: 1000px;
+}
+.flipper {
+	-webkit-transition: -webkit-transform 3s;
+	-moz-transition: -moz-transform 3s;
+	-o-transition: -o-transform 3s;
+	-ms-transition: -ms-transform 3s;
+	transition: transform 3s;
+	
+	-webkit-transform:rotateY(180deg);
+	-moz-transform:rotateY(180deg);
+	-o-transform:rotateY(180deg);
+	-ms-transform:rotateY(180deg);
+	transform:rotateY(180deg);
+
+	position: relative;
+}
+
+.front {
+	z-index: 3;
+	transform: rotateY(0deg);
+}
+
+.back {
+	transform: rotateY(180deg);
+}
