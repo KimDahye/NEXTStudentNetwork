@@ -27,11 +27,15 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 | Product manager  | KimDahye               |                       |
 | Design           | Shinyoung Park         | Main logo design      |
 | Web engineer     | helloheesu             |                       |
+| Web engineer     | FourwingsY             | SVG Dynamic logo      |
 | Android engineer | Jaebong Lee            |                       |
 | CI, server infra | cocagolau              | Jenkins, ubuntu 12.04 |
 | Data parsing     | cocagolau              | python                |
 | Database         | reaperes, cocagolau    | mysql                 |
 | Server engineer  | reaperes               | node.js server        |
+
+## Special thanks to
+* Gyeongmin Lee
 
 개발에 참여 하실 분들은 **다혜에게 github 계정을 알려주시고**, **developers group 대화방에
 초대해 달라고 요청**하시면 됩니다. 누구든 환영합니다!!
