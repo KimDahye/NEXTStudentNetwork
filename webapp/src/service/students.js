@@ -7,6 +7,9 @@ var database = require(path.join(SRC_ROOT, 'modules/database.js'));
 
 /**
  * Get random student's profiles.
+ * @param {Number} seed seed number
+ * @param {Number} start start num of random profiles
+ * @param {Number} num number of profiles
  * @param {Function} callback Callback function returns student's profiles.
  * [{
  *    nameKor: String,
@@ -22,7 +25,7 @@ var database = require(path.join(SRC_ROOT, 'modules/database.js'));
  * ]
  * @param {Number} num number of student's profiles
  */
-exports.getRndProfiles = function (num, callback) {
+exports.getRndProfiles = function (seed, start, num, callback) {
   var query = 'SELECT Stu.stu_name_kor AS nameKor, Stu.stu_name_eng AS nameEng, ' +
       '  Mjr.mjr_name_kor AS majorKor, Mjr.mjr_name_eng AS majorEng, ' +
       '  Stu.stu_img_name AS imgName, Stu.stu_title AS title, ' +
@@ -30,10 +33,10 @@ exports.getRndProfiles = function (num, callback) {
       'FROM Students AS Stu ' +
       'JOIN Majors AS Mjr ' +
       'ON Stu.stu_major = Mjr.mjr_id ' +
-      'ORDER BY rand() ' +
+      'ORDER BY rand(?) ' +
       'LIMIT ';
 
-  database.query(query + num, function (err, results) {
+  database.query(query + start + ', ' + num, seed, function (err, results) {
     callback(results);
   });
 };

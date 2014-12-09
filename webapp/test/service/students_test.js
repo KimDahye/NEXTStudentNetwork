@@ -13,8 +13,10 @@ describe('Students Service', function() {
   });
 
   it('#getRndProfiles should be success', function (done) {
+    var seed = 1;
+    var start = 0;
     var num = 4;
-    studentsService.getRndProfiles(num, function (arr) {
+    studentsService.getRndProfiles(seed, start, num, function (arr) {
       expect(arr.length).equal(num);
       done();
     });

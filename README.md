@@ -41,7 +41,7 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 초대해 달라고 요청**하시면 됩니다. 누구든 환영합니다!!
 
 ## APIs
-* [GET /students?num=[Number]] (#get-student-profiles)
+* [GET /students?num=[Number]&start=[Number]] (#get-student-profiles)
 
 ## Error response (status code 400)
 		{
@@ -61,8 +61,9 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 ### Get student profiles
 
 		Request
-		GET /students?num=[Number]
-		Number parameter should be 0 < Number <= 24.
+		GET /students?num=[Number]&start=[Number]
+		num parameter should be 0 < Number <= 24.
+		start
 
 		Response
 		{
