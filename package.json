@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node index.js",
+    "test": "mocha webapp/test --require global.js --recursive --ui bdd --reporter spec"
   },
   "dependencies": {
     "async": "^0.9.0",

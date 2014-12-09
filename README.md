@@ -58,6 +58,18 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 | 10   | Required parameter is not defined   | Should define required parameters                                     |
 | 20   | Parameter is invalid                | Should correct parameter name                                         |
 
+## How to start server
+
+		$ npm install --production
+		$ npm start
+
+## How to test server
+
+		$ npm install
+		$ npm test
+
+		If you want to test routes, run server first
+
 ### Get student profiles
 
 		Request
@@ -71,3 +83,4 @@ ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
 				(nameKor, nameEng, majorKor, majorEng, imgName, title, vision, movieUrl)
 			}, ... ]
 		}
+
