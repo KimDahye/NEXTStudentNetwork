@@ -20,6 +20,13 @@ a {
     padding-top: 100%;
 }
 
+.card.bi:before {
+    padding-top: 50%;
+}
+.bi .profile {
+    top:25%;
+}
+
 .info {
     font: 13px/20px 'Nanum Gothic', sans-serif;
     width: 100%;
