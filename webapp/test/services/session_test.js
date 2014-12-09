@@ -2,7 +2,7 @@ require('../../../global.js');
 var path = require('path');
 var expect = require('expect.js');
 
-var sessionService = require(path.join(SRC_ROOT, 'service/session.js'));
+var sessionService = require(path.join(SRC_ROOT, 'services/session.js'));
 
 describe('Session service', function() {
   it('#checkSeedIfNotSet should success.', function (done) {

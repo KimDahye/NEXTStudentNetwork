@@ -1,8 +1,8 @@
 var path = require('path');
 var router = require('express').Router();
-var studentsService = require(path.join(SRC_ROOT, 'service/students.js'));
-var responseService = require(path.join(SRC_ROOT, 'service/response.js'));
-var sessionService = require(path.join(SRC_ROOT, 'service/session.js'));
+var studentsService = require(path.join(SRC_ROOT, 'services/students.js'));
+var responseService = require(path.join(SRC_ROOT, 'services/response.js'));
+var sessionService = require(path.join(SRC_ROOT, 'services/session.js'));
 
 // Router starts '/students'
 
