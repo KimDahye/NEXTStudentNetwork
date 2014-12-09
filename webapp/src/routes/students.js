@@ -2,6 +2,7 @@ var path = require('path');
 var router = require('express').Router();
 var studentsService = require(path.join(SRC_ROOT, 'service/students.js'));
 var responseService = require(path.join(SRC_ROOT, 'service/response.js'));
+var sessionService = require(path.join(SRC_ROOT, 'service/session.js'));
 
 // Router starts '/students'
 
@@ -27,11 +28,17 @@ var responseService = require(path.join(SRC_ROOT, 'service/response.js'));
  *    ]
  * }
  */
-router.get('', function (req, res) {
+router.get('', function (req, res, next) {
+  /**
+   * If session does not have a seed, set a seed number.
+   */
+  sessionService.checkSeedIfNotSet(req.session);
+  next();
+}, function (req, res) {
   var response = {errors: []};
   var num = req.query.num;
   var start = req.query.start !== undefined ? Number(req.query.start) : 0;
-  var seed = 0; // todo
+  var seed = req.session.seed;
 
   // check request validation
   if (num == undefined)
