@@ -45,224 +45,224 @@ var sampleData = [{
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test0.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test1.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test2.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test3.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test4.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test5.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test6.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test7.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test8.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test9.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test10.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test11.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test12.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test13.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test14.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test15.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test16.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test17.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test18.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test19.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test20.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test21.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test22.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test23.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }, {
   nameKor: '김다혜',
   nameEng: 'KimDaHye',
   majorKor: '웹 서버 전공',
   majorEng: 'Web server track',
-  imgName: 'test24.jpg',
+  imgName: '/images/placeholder.png',
   title: '나무처럼 살고픈 김다혜',
   vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-  movieUrl: 'http://www.youtube.com/v/PzFVXtUq7Eg'
+  movieUrl: 'PzFVXtUq7Eg'
 }];
