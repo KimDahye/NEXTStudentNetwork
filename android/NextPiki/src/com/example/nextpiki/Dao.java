@@ -162,56 +162,7 @@ public class Dao {
 			return TileList;
 		}
 	
-	public void getJsonData() {
-		new getDataTask().execute();
-	}
 	
-	private class getDataTask extends AsyncTask<String, Void, String> {
-
-		public String getJsonData(int num){
-			String SERVER_ADDRESS = "http://125.209.198.141";
-			String REQUSET_URL = SERVER_ADDRESS + "/students";
-
-			String result = "";
-			HttpClient httpClient = new DefaultHttpClient();
-			HttpGet hGet;
-			HttpResponse hRes;
-			InputStream inStream;
-			Builder builder;
-			String getUrl;
-			
-			builder = Uri.parse(REQUSET_URL).buildUpon();
-			builder.appendQueryParameter("num", Integer.toString(num));
-			
-			getUrl = builder.build().toString();
-			Log.d("getJsonData()", "getUrl: " + getUrl);
-
-			hGet = new HttpGet(getUrl);
-
-			try {
-				hRes = httpClient.execute(hGet);
-				result = EntityUtils.toString(hRes.getEntity(),"UTF-8");
-
-
-			} catch (Exception e) {
-				// fuck you naver
-				e.printStackTrace();
-				Log.e("abc","catch");
-			}
-			
-			Log.e("abc",result);
-			return result;
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			String jsonData = getJsonData(6);
-			insertJsonData(jsonData);
-			return jsonData;
-		}
-		
-		
-	}
 
 
 

@@ -11,6 +11,7 @@ public class TileInfo {
 	private String vision;
 	private String movie;
 	
+	public TileInfo(){}
 	
 	public TileInfo(int id, String name_kor, String name_eng, String img_name,
 			String major, String title, String vision, String movie) {
@@ -22,6 +23,38 @@ public class TileInfo {
 		this.major = major;
 		this.title = title;
 		this.vision = vision;
+		this.movie = movie;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName_kor(String name_kor) {
+		this.name_kor = name_kor;
+	}
+
+	public void setName_eng(String name_eng) {
+		this.name_eng = name_eng;
+	}
+
+	public void setImg_name(String img_name) {
+		this.img_name = img_name;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setVision(String vision) {
+		this.vision = vision;
+	}
+
+	public void setMovie(String movie) {
 		this.movie = movie;
 	}
 

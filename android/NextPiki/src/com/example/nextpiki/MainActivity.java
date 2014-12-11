@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,17 +25,18 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		ActionBar actionBar = getActionBar();
-        actionBar.hide();
-	
-		
 		nextBi = (ImageView) findViewById(R.id.topImg);
+		refreshData();
 		
-		//DataBase에서 정보를 읽어옴 
-        Dao dao = new Dao(getApplicationContext());
         
-        dao.getJsonData();
         
+	}
+	
+	private void makeGridView()
+	{	
+		Dao dao = new Dao(getApplicationContext());
+		
+		//DB에서 글 내용을 받아옴
         TileList = dao.getTileList();
 		
         //gridView에 어댑터 부착
@@ -42,6 +44,31 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		gridView.setAdapter(new GridViewAdapter(this,R.layout.activity_img_tile_left,TileList));
 		
 		gridView.setOnItemClickListener(this);
+	}
+	
+	private Handler handler = new Handler();
+	
+	private void refreshData()
+	{
+		new Thread(){
+			public void run(){
+				//서버에서 JsonData가져옴
+				Proxy proxy = new Proxy();
+				String jsonData = proxy.getJsonData();
+						
+				//DataBase에 JsonData를 저장 
+				Dao dao = new Dao(getApplicationContext());
+				dao.insertJsonData(jsonData);
+				
+			
+				handler.post(new Runnable(){
+					public void run(){
+						makeGridView();
+					}
+				});
+			}
+		}.start();
+		
 	}
 
 	@Override
