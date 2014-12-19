@@ -1,9 +1,9 @@
 $(".card").hover(function() {
-    //alert("hi");
     $(this).find(".info").css({backgroundColor:getRandomBGcolor()});
-    $(this).find(".info").fadeIn("fast");
+    //$(this).find(".info").show();
+    $(this).find(".info").css({opacity:1}).fadeIn("fast");
 }, function() {
-    //alert("hello");
+    $(this).find(".info").clearQueue();
     $(this).find(".info").fadeOut("fast");
 });
 
