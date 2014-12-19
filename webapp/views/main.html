@@ -18,10 +18,14 @@
     </div>
     <div id="logo">
         <div class="container">
-            <img id="img_logo" src="/images/logo.jpg" />
+            <img id="img_logo" class="hide" src="/images/logo.jpg" />
         </div>
     </div>
     <div class="card_container">
+    	<a href="#">
+    		<img class="card bi hide" src="/images/logo.jpg" />
+    	</a>
+
         <% for(var i=0; i<data.length; i++) { %>
         <a href="#<%= data[i].movieUrl %>">
             <div class="card">
