@@ -163,3 +163,16 @@ setTimeout(function() {
 	document.querySelector("svg").setAttribute("class", "hide");
 }, waitTime + animationTime + 200);
 
+setTimeout(function() {
+	var logoImage = document.querySelector("#img_logo");
+	logoImage.className = "shirink";
+	// logoImage.id = "";
+	var cardList = document.querySelector(".card_container");
+	cardList.appendChild(logoImage);
+	var logoContainer = document.querySelector("#logo");
+	logoContainer.className = "shirink"
+	var logoContainer = document.querySelector("#logo .container");
+	logoContainer.className = "container shirink"
+	setTimeout(function() {logoContainer.parentNode.removeChild(logoContainer)}, 1000);
+
+}, waitTime + animationTime + 200 + 1000);
