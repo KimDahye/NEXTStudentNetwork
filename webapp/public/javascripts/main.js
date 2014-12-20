@@ -87,7 +87,25 @@ $.ajax({
 	success:function(data){
 		var studentInfos = shuffle(data.data);
 		app = new App(studentInfos);	
+		breakWord($(".vision"));
 	}
 });	
      //	http://localhost:3000/students
 
+var breakWord = function(obj) {
+	console.log('wordbreak');
+	// http://mytory.net/archives/2801/
+	if(window.navigator.userAgent.indexOf("MSIE ") > 0) {
+		// yes IE,
+		// http://support.microsoft.com/kb/167820#rtDisclaimer
+		$(this).css({"word-break": "keep-all"});
+	} else { // no IE
+		$(obj).each(function (index) {
+			var content = $(this).text();
+			content = "<span>"+content.replace(/\s/g, "</span> <span>")+"</span>";
+			$(this).html(content);
+			$("span", this).css({"white-space": "nowrap"});
+			console.log(index+':'+content);
+		});
+	}
+};
