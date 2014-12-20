@@ -4,26 +4,28 @@
 <title>NEXT STUDENT NETWORK</title>
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 <script type="text/template" id="people-template">
-<a href="#" class="item box" id="next<%= id %>" style="background-image: url(<%= imgName %>)">
+<a href="#" class="item box" id="next<T= id T>" style="background-image: url('<T= imgName T>')">
 	<div class="item_content" style="display: block;">
 	    <div class="info">
-	        <div class="name"><strong><%= nameKor %></strong></div>
-	        <!--.name-->
-	        <div class="major"><%= majorKor %></div>
-	        <!--.major-->
-	        <div class="title"><%= title %></div>
-	        <!--.title--> 
+	        <div class="name"><strong><T= nameKor T></strong></div>
+	        <T--.name-->
+	        <div class="major"><T= majorKor T></div>
+	        <T--.major-->
+	        <div class="title"><T= title T></div>
+	        <T--.title--> 
+	        <div class="vision"><T= vision T></div>
+	        <T--.vision--> 
 	    </div>
-        <!--.info--> 
+        <T--.info--> 
 	</div>
 </a>
 </script>
 <script type="text/template" id="logo-template">
-<a href="#" class="item box logo" style="background-image: url(<%= imgName %>)">
+<a href="#" class="item box logo" style="background-image: url(<T= imgName T>)">
 </a>
 </script>
 <script type="text/template" id="logo-small-template">
-<a href="#" class="item box" style="background-image: url(<%= imgName %>)">
+<a href="#" class="item box" style="background-image: url(<T= imgName T>)">
 </a>
 </script>
 <body>
@@ -34,7 +36,7 @@
 </div>
 <div class="wrap">
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script src="/javascripts/_.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/javascripts/LogoIntro.js"></script>
 <script src="/javascripts/App.js"></script>

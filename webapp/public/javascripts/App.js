@@ -26,6 +26,8 @@ Student.prototype.showInfo = function(containerEl) {
 };
 Student.prototype.openPopup = function(e) {
 	alert("클릭하면 "+this.info.nameKor+" 학생에 대한 소개창이 뜹니다.");
+	console.log("클릭하면 "+this.info.nameKor+" 학생에 대한 소개창이 뜹니다.");
+
 };
 Student.prototype.foldInfo = function(containerEl) {
 	var infoEl = this.el.querySelector(".info");

@@ -28,8 +28,13 @@ router.get('', function (req, res) {
   var response = {errors: []};
 
   // check request validation
-  if (req.query.num == undefined)
-    response.errors.push(responseService.errResponse(10, 'num parameter should be defined.'));
+  if (req.query.num == undefined) {
+  studentsService.getRndProfiles(req.query.num, function (arr) {
+    response = {data: arr};
+    res.status(200).send(response);
+  });
+  }
+    //response.errors.push(responseService.errResponse(10, 'num parameter should be defined.'));
   else
     if (isNaN(Number(req.query.num)))
       response.errors.push(responseService.errResponse(20, 'num parameter should be a number.'));

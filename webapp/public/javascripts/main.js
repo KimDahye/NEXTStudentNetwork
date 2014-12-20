@@ -71,202 +71,23 @@
 				
 				wapperEl.addEventListener("transitionend", wrapperHandlerCache, false);
 			}.bind(this), false);
-		}, 5000);
+		}, 4500);
 		
 		
 		$(window).on('resize',function(){
 			resizeLogo();
 		});
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
 
-var studentInfos = [{
-	nameKor: '김다혜',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kooseungmo.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이건희',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130626/17/1111111.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이재봉',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimdongjin.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '유선',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimjongkyu.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '김민주',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/parkjeasung.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이건희',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130626/17/1111111.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이재봉',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimdongjin.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '유선',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimjongkyu.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '김민주',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/parkjeasung.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '김다혜',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kooseungmo.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이건희',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130626/17/1111111.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이재봉',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimdongjin.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '유선',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimjongkyu.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '김민주',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/parkjeasung.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이건희',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130626/17/1111111.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이재봉',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimdongjin.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '유선',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimjongkyu.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '김민주',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/parkjeasung.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '김다혜',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kooseungmo.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이건희',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130626/17/1111111.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-},{
-	nameKor: '이재봉',
-	nameEng: 'KimDaHye',
-	majorKor: '웹 서버 전공',
-	majorEng: 'Web server track',
-	imgName: 'http://www.nhnnext.org/static/20130219/14/kimdongjin.jpg',
-	title: '나무처럼 살고픈 김다혜',
-	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
-}];
+$.ajax({ 
+	url: "./students", 
+	success:function(data){
+		var studentInfos = shuffle(data.data);
+		app = new App(studentInfos);	
+	}
+});	
+     //	http://localhost:3000/students
 
-var app = new App(studentInfos);
