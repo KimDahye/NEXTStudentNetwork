@@ -1,63 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/video.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/logo.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <title></title>
-</head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+<title>NEXT STUDENT NETWORK</title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+<script type="text/template" id="people-template">
+<a href="#" class="item box" id="next<%= id %>" style="background-image: url(<%= imgName %>)">
+	<div class="item_content" style="display: block;">
+	    <div class="info">
+	        <div class="name"><strong><%= nameKor %></strong></div>
+	        <!--.name-->
+	        <div class="major"><%= majorKor %></div>
+	        <!--.major-->
+	        <div class="title"><%= title %></div>
+	        <!--.title--> 
+	    </div>
+        <!--.info--> 
+	</div>
+</a>
+</script>
+<script type="text/template" id="logo-template">
+<a href="#" class="item box logo" style="background-image: url(<%= imgName %>)">
+</a>
+</script>
+<script type="text/template" id="logo-small-template">
+<a href="#" class="item box" style="background-image: url(<%= imgName %>)">
+</a>
+</script>
 <body>
-    <div id="videoModal" class="close">
-        <a title="Close" class="close" href="#">&#10006;</a>
+<div id="logo">
+    <div class="container">
+        <img id="img_logo" src="/images/logo.jpg" />
     </div>
-    <div id="logo">
-        <div class="container">
-            <img id="img_logo" class="hide" src="/images/logo.jpg" />
-        </div>
-    </div>
-    <div class="card_container">
-    	<a href="#">
-    		<img class="card bi hide" src="/images/logo.jpg" />
-    	</a>
-
-        <% for(var i=0; i<data.length; i++) { %>
-        <a href="#<%= data[i].movieUrl %>">
-            <div class="card">
-                <div class="info">
-                    <div class="name"><%= data[i].nameKor %></div>
-                    <div class="major"><%= data[i].majorKor %></div>
-                    <div class="motto"><%= data[i].vision %></div>
-                </div>
-                <img class="profile" src="<%= data[i].imgName %>" alt="<%= data[i].nameEng %>" />
-            </div>
-        </a>
-        <% } %>
-
-        <a href="http://nhnnext.org/">
-            <div class="card logo">
-                <div class="info">
-                    <div class="name">NHN NEXT 홈페이지</div>
-                </div>
-                <img class="profile" src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/527758_138972806226304_158062314_n.jpg?oh=bddc55a03206601026f0014f568a7729&oe=55186C91&__gda__=1425925935_dca03495f9a4e13ca980eff59bfc132b" alt="141010DahyeKim" />
-            </div>
-        </a>
-
-        <a href="#">
-            <div class="card bi">
-                <img class="profile" src="http://nhnnext.org/img/bi/next_bi.png" alt="141010DahyeKim" />
-            </div>
-        </a>
-
-    </div>
-    <script type="text/javascript" src="/javascripts/main.js"></script>
-    <script type="text/javascript" src="/javascripts/video.js"></script>
-    <script type="text/javascript" src="/javascripts/ease.js"></script>
-    <script type="text/javascript" src="/javascripts/logo.js"></script>
+</div>
+<div class="wrap">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/javascripts/LogoIntro.js"></script>
+<script src="/javascripts/App.js"></script>
+<script src="/javascripts/main.js"></script>
 </body>
-</html>
