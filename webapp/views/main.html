@@ -3,20 +3,22 @@
 <link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
 <title>NEXT STUDENT NETWORK</title>
 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/popup.css" />
+<link rel="stylesheet" href="/stylesheets/bootstrap.carousel.css" />
 <script type="text/template" id="people-template">
-<a href="#" class="item box" id="next<T= id T>" style="background-image: url('<T= imgName T>')">
+<a href="#" class="item box" id="stu_<T= studentNo T>" style="background-image: url('<T= imgName T>')">
 	<div class="item_content" style="display: block;">
-	    <div class="info">
-	        <div class="name"><strong><T= nameKor T></strong></div>
-	        <T--.name-->
-	        <div class="major"><T= majorKor T></div>
-	        <T--.major-->
-	        <div class="title"><T= title T></div>
-	        <T--.title--> 
-	        <div class="vision"><T= vision T></div>
-	        <T--.vision--> 
-	    </div>
-        <T--.info--> 
+		<div class="info">
+			<div class="name"><strong><T= nameKor T></strong></div>
+			<T--.name-->
+			<div class="major"><T= majorKor T></div>
+			<T--.major-->
+			<div class="title"><T= title T></div>
+			<T--.title--> 
+			<div class="vision"><T= vision T></div>
+			<T--.vision--> 
+		</div>
+		<T--.info--> 
 	</div>
 </a>
 </script>
@@ -29,16 +31,51 @@
 </a>
 </script>
 <body>
+<div id="mask"></div>
+<div id="popup">
+	<div id="carousel-popup" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-popup" data-slide-to="0"></li>
+			<li data-target="#carousel-popup" data-slide-to="1"></li>
+			<li data-target="#carousel-popup" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item popup1">
+			</div>
+			<div class="item popup2">
+			</div>
+			<div class="item popup3">
+			</div>
+		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-popup" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-popup" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+<!--#popup-->
 <div id="logo">
-    <div class="container">
-        <img id="img_logo" src="/images/logo.jpg" />
-    </div>
+	<div class="container">
+		<img id="img_logo" src="/images/logo.jpg" />
+	</div>
 </div>
 <div class="wrap">
 </div>
 <script src="/javascripts/_.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="/javascripts/bootstrap.carousel.js"></script>
 <script src="/javascripts/LogoIntro.js"></script>
 <script src="/javascripts/App.js"></script>
 <script src="/javascripts/main.js"></script>
+<script src="/javascripts/popup.js"></script>
 </body>

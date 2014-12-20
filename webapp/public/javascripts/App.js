@@ -10,7 +10,8 @@ Student.prototype.init = function() {
 Student.prototype.appendToContainer = function(containerEl) {
 	var elString = this.template(this.info);
 	containerEl.insertAdjacentHTML("beforeend",elString);
-	this.el = document.getElementById("next"+this.info.id);
+	console.log(this.info.studentNo);
+	this.el = document.getElementById("stu_"+this.info.studentNo);
 	this.el.addEventListener("mouseenter", this.showInfo.bind(this), false);
 	this.el.addEventListener("mouseleave", this.foldInfo.bind(this), false);
 
@@ -27,7 +28,6 @@ Student.prototype.showInfo = function(containerEl) {
 Student.prototype.openPopup = function(e) {
 	alert("클릭하면 "+this.info.nameKor+" 학생에 대한 소개창이 뜹니다.");
 	console.log("클릭하면 "+this.info.nameKor+" 학생에 대한 소개창이 뜹니다.");
-
 };
 Student.prototype.foldInfo = function(containerEl) {
 	var infoEl = this.el.querySelector(".info");
