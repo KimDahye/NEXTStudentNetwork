@@ -28,6 +28,10 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(err, req, res, next) {
+  if(res.statusCode == 304) {
+  	// 304 Not Modified is not a error.
+  	return;
+  }
   res.status(err.status || 500);
   res.send(err.message);
 });
