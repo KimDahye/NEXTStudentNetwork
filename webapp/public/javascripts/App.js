@@ -21,9 +21,24 @@ Student.prototype.showInfo = function(containerEl) {
 	var infoEl = this.el.querySelector(".info");
 	infoEl.style.transition = "none";
 	infoEl.style.display = "block";
+	infoEl.style.backgroundColor = this.getRandomColor();
 	infoEl.style.opacity = "1";
 	console.log("오픈");
 };
+Student.prototype.getRandomColor = function() {
+var bgcArray = 
+	[
+	'rgb(0, 210, 103)',
+	'rgb(11, 110, 232)',
+	'rgb(110, 232, 255)',
+	'rgb(190, 119, 90)',
+	'rgb(255, 111, 65)',
+	'rgb(255, 225, 14)'
+	];
+	var index = Math.floor((Math.random() * bgcArray.length));
+	return bgcArray[index];
+};
+
 Student.prototype.openPopup = function(e) {
 	alert("클릭하면 "+this.info.nameKor+" 학생에 대한 소개창이 뜹니다.");
 	console.log("클릭하면 "+this.info.nameKor+" 학생에 대한 소개창이 뜹니다.");
