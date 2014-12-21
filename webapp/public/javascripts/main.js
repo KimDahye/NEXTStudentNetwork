@@ -17,7 +17,7 @@
 			var width = style.getPropertyValue("width");
 			var height = style.getPropertyValue("height");
 
-   			console.log("real width: "+(parseInt(width)*zoom));
+//   			console.log("real width: "+(parseInt(width)*zoom));
    			var realWidth = (parseInt(width)*zoom);
    			var realHeight = (parseInt(height)*zoom);
 
@@ -29,15 +29,19 @@
  			}
 		}
 
-		// 3.5 초 후에 축소 시킨다.
+		console.log(" 3.5 초 후에 로고애니메이션을 축소 시킨다.");
 		setTimeout(function(){
+			console.log("로고애니메이션을 축소!");
+
 			var el = document.getElementById("logo")
 			// fadeout 시킨 후 화면을 
 			el.style.opacity = "1";
 			el.style.transform = "scale3d(1,1,1)";
-			el.style.transition = ".6s opacity linear, 1s transform ease";
+			el.style.transition = ".6s opacity linear, 1s webkit-transform ease, 1s transform ease";
+
 			el.style.opacity = "0";
 			el.style.transform = "scale3d(.6,.6, 1)";
+			el.style.webkitTransform = "scale3d(.6,.6, 1)";
 
 			el.addEventListener("transitionend", function(e){
 				el.style.display = "none";
@@ -49,7 +53,6 @@
 				var wrapperHandlerCache = function(e){
 					console.log("래퍼가 나타나면?"); 
 					wapperEl.removeEventListener('transitionend', wrapperHandlerCache, false);
-
 					// 랜덤하게 모든 카드들을 나타나게 만든다.
 					var itemElList = document.querySelectorAll(".item");
 					console.log(itemElList);
@@ -57,7 +60,7 @@
 					[].forEach.call(itemElList, function(itemEl){
 						
 						var randDelay = Math.random() * 1300;
-						console.log(randDelay);
+						//console.log(randDelay);
 						setTimeout(function(){
 							itemEl.style.transition = "1s opacity ease";
 							itemEl.style.opacity = "1";		
@@ -105,7 +108,7 @@ var breakWord = function(obj) {
 			content = "<span>"+content.replace(/\s/g, "</span> <span>")+"</span>";
 			$(this).html(content);
 			$("span", this).css({"white-space": "nowrap"});
-			console.log(index+':'+content);
+//			console.log(index+':'+content);
 		});
 	}
 };
