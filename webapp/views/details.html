@@ -1,0 +1,11 @@
+<div id="custom-content" class="white-popup-block" style="max-width:600px; margin: 20px auto;">
+	<h1 class="popup-title">{{ data.title }}</h1>
+	<p class="popup-content">{{ data.content }}</p>
+{% for oImage in data.aImage %}
+	<img src="{{ oImage.imgSrc }}" />
+	<p class="popup-imgdesc">{{ oImage.imgDesc }}</p>
+{% endfor %}
+{% if data.pdfSrc %}
+	<object data="{{ data.pdfSrc }}" type="application/pdf" width="100%" height="100%" />
+{% endif %}
+</div>

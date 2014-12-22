@@ -152,33 +152,61 @@ svg {
 
 /* popup */
 
-
-/**
- * Simple fade transition
- */
-
+/* overlay at start */
 .mfp-fade.mfp-bg {
-    opacity: 0;
-    -webkit-transition: all 0.15s ease-out; 
-    -moz-transition: all 0.15s ease-out; 
-    transition: all 0.15s ease-out;
+  opacity: 0;
+
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
 }
+/* overlay animate in */
 .mfp-fade.mfp-bg.mfp-ready {
-    opacity: 0.8;
+  opacity: 0.8;
 }
+/* overlay animate out */
 .mfp-fade.mfp-bg.mfp-removing {
-    opacity: 0;
+  opacity: 0;
 }
 
+/* content at start */
 .mfp-fade.mfp-wrap .mfp-content {
-    opacity: 0;
-    -webkit-transition: all 0.15s ease-out; 
-    -moz-transition: all 0.15s ease-out; 
-    transition: all 0.15s ease-out;
+  opacity: 0;
+
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
 }
+/* content animate it */
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
-    opacity: 1;
+  opacity: 1;
 }
+/* content animate out */
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-    opacity: 0;
+  opacity: 0;
+}
+
+.white-popup-block {
+    background: #FFF;
+    padding: 20px 30px;
+    text-align: left;
+    max-width: 650px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.popup-title {
+    font-size: 200%;
+    margin-bottom: 5px;
+}
+
+.popup-content {
+    font-size: 150%;
+    margin-bottom: 10px;
+}
+
+.popup-imgdesc {
+    font-size: 120%;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }

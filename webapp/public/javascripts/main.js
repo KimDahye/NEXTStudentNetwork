@@ -28,13 +28,10 @@ function resizeLogo() {
 
 function addPopup(el) {
 	$(el).magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 160,
-		preloader: false,
+		type: 'ajax',
 
-		fixedContentPos: false
+		removalDelay: 300,
+		mainClass: 'mfp-fade'
 	});
 }
 

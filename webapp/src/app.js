@@ -16,9 +16,11 @@ app.use(cookieParser());
 // routers
 var indexRouter = require(path.join(SRC_ROOT, 'routes/index.js'));
 var studentsRouter = require(path.join(SRC_ROOT, 'routes/students.js'));
+var detailsRouter = require(path.join(SRC_ROOT, 'routes/details.js'));
 
 app.use('/', indexRouter);
 app.use('/students', studentsRouter);
+app.use('/details', detailsRouter);
 
 // Error handling
 app.use(function(req, res, next) {
