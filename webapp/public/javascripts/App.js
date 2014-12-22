@@ -10,12 +10,15 @@ Student.prototype.init = function() {
 Student.prototype.appendToContainer = function(containerEl) {
 	var elString = this.template(this.info);
 	containerEl.insertAdjacentHTML("beforeend",elString);
-	this.el = document.getElementById("next"+this.info.id);
+	console.log(this.info.studentNo);
+	this.el = document.getElementById("stu_"+this.info.studentNo);
 	this.el.addEventListener("mouseenter", this.showInfo.bind(this), false);
 	this.el.addEventListener("mouseleave", this.foldInfo.bind(this), false);
 
-	var infoEl = this.el.querySelector(".info");
-	infoEl.addEventListener("click", this.openPopup.bind(this), false);
+	// var infoEl = this.el.querySelector(".info");
+	// infoEl.addEventListener("click", this.openPopup.bind(this), false);
+
+	addPopup(this.el);
 };
 Student.prototype.showInfo = function(containerEl) {
 	var infoEl = this.el.querySelector(".info");

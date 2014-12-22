@@ -9,6 +9,7 @@ var database = require(path.join(SRC_ROOT, 'modules/database.js'));
  * Get random student's profiles.
  * @param {Function} callback Callback function returns student's profiles.
  * [{
+ *    studentNo: Integer,
  *    nameKor: String,
  *    nameEng: String,
  *    majorKor: String,
@@ -45,6 +46,7 @@ exports.getMaxStudents = function (callback) {
 
 // temp data
 var sampleData = [{
+	studentNo: '141001',
 	nameKor: '김다혜',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -54,6 +56,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141002',
 	nameKor: '이건희',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -63,6 +66,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141003',
 	nameKor: '이재봉',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -72,6 +76,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141004',
 	nameKor: '유선',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -81,6 +86,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141005',
 	nameKor: '김민주',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -90,6 +96,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141006',
 	nameKor: '이재봉',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -99,6 +106,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141007',
 	nameKor: '유선',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -108,6 +116,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141008',
 	nameKor: '김민주',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -117,6 +126,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141009',
 	nameKor: '김다혜',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -126,6 +136,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141010',
 	nameKor: '이건희',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -135,6 +146,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141011',
 	nameKor: '이재봉',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -144,6 +156,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141012',
 	nameKor: '유선',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -153,6 +166,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141013',
 	nameKor: '김민주',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -162,6 +176,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141014',
 	nameKor: '이건희',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -169,8 +184,9 @@ var sampleData = [{
 	imgName: 'http://www.nhnnext.org/static/20130221/19/lny(1).jpg',
 	title: '나무처럼 살고픈 김다혜',
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
+	movieUrl: 'PzFVXtUq7Eg',
 },{
+	studentNo: '141015',
 	nameKor: '이재봉',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -180,6 +196,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141016',
 	nameKor: '유선',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -189,6 +206,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141017',
 	nameKor: '김민주',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -198,6 +216,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141018',
 	nameKor: '김다혜',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -207,6 +226,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141019',
 	nameKor: '이건희',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -216,6 +236,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141020',
 	nameKor: '이재봉',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -225,6 +246,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141021',
 	nameKor: '김민주',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -232,8 +254,9 @@ var sampleData = [{
 	imgName: 'http://www.nhnnext.org/static/20130219/14/joohyungchulcylog.jpg',
 	title: '나무처럼 살고픈 김다혜',
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
-	movieUrl: 'PzFVXtUq7Eg'
+	movieUrl: 'PzFVXtUq7Eg',
 },{
+	studentNo: '141022',
 	nameKor: '김다혜',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
@@ -243,6 +266,7 @@ var sampleData = [{
 	vision: '소프트웨어를 통해 공동체의 가치를 이루고 싶습니다.',
 	movieUrl: 'PzFVXtUq7Eg'
 },{
+	studentNo: '141023',
 	nameKor: '이건희',
 	nameEng: 'KimDaHye',
 	majorKor: '웹 서버 전공',
