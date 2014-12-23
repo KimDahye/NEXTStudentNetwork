@@ -29,8 +29,8 @@ a {
     display: inline-block;
     overflow: hidden;
 
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 160px;
 
     z-index: 1;
 	
@@ -50,7 +50,7 @@ a {
 }
 
 .logo {
-    width: 292px;
+    width: 372px;
 	margin-top: 6px; /*-4 해야 실제 사이즈*/
 	margin-left: 6px;
 	margin-right: 2px;
