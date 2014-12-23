@@ -1,6 +1,6 @@
 var path = require('path');
 var router = require('express').Router();
-var detailsService = require(path.join(SRC_ROOT, 'service/details.js'));
+var detailsService = require(path.join(SRC_ROOT, 'services/details.js'));
 var swig  = require('swig');
 
 // Router starts '/details'

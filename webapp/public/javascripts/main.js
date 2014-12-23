@@ -118,7 +118,7 @@ $(window).on('resize',function(){
 });
 
 $.ajax({ 
-	url: "./students", 
+	url: "./students?num=21",
 	success:function(data){
 		var studentInfos = shuffle(data.data);
 		app = new App(studentInfos);	
