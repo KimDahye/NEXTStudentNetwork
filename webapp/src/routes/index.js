@@ -1,11 +1,11 @@
 var router = require('express').Router();
 var path = require('path');
-var studentsService = require(path.join(SRC_ROOT, 'services/students.js'));
 
-// Router starts '/'
-
+/*
+ Router for '/'
+*/
 router.get('/', function(req, res) {
-  res.status(200).render('main.html');
+  res.status(200).render('main');
 });
 
 module.exports = router;

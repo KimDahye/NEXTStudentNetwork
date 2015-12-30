@@ -4,11 +4,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var mongoose   = require('mongoose');
+//mongoose.connect('mongodb://localhost/nextin');
 
 // Express configuration
 var app = express();
 app.set('views', VIEW_ROOT);
-app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 app.use(express.static(PUBLIC_ROOT));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -25,10 +27,7 @@ app.use(session({
 
 // routers
 var indexRouter = require(path.join(SRC_ROOT, 'routes/index.js'));
-var studentsRouter = require(path.join(SRC_ROOT, 'routes/students.js'));
-
 app.use('/', indexRouter);
-app.use('/students', studentsRouter);
 
 // Error handling
 app.use(function(req, res, next) {

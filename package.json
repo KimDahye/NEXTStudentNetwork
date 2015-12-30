@@ -1,6 +1,6 @@
 {
   "name": "NEXTStudentNetwork",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "start": "node index.js",
@@ -15,9 +15,9 @@
     "express": "~4.2.0",
     "express-session": "^1.9.3",
     "morgan": "~1.5.0",
-    "mysql": "^2.5.3",
     "swig": "^1.4.2",
-    "xregexp": "^2.0.0"
+    "xregexp": "^2.0.0",
+    "mongoose": "^3.6.13"
   },
   "devDependencies": {
     "mocha": "~2.0.1",
