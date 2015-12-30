@@ -1,20 +1,10 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/nextindb');
+mongoose.connect('mongodb://localhost/mytest');
 var Schema = mongoose.Schema;
 
 // create a schema
 var userSchema = new Schema({
-  name: String,
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  admin: Boolean,
-  location: String,
-  meta: {
-    age: Number,
-    website: String
-  },
-  created_at: Date,
-  updated_at: Date
+  name: String
 });
 
 // the schema is useless so far
@@ -28,7 +18,8 @@ var hoyoung = new User({name: 'Hoyoung Jung'});
 console.log(hoyoung.name);
 
 hoyoung.save(function (err, hoyoung) {
-	console.log("saved.");
+	if (err)
+		console.log("err");
+	else
+		console.log("saved.");
 });
-
-

@@ -22,22 +22,20 @@ pm2 restart server.js
 pm2 stop server.js
 sudo yum install -y git
 ```
-### docker install
-* 관리의 편의를 위해 docker + mongodb 조합 이용
+### mongodb install
+* https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-amazon/
+* create /etc/yum.repos.d/mongodb-org-3.0.repo
+```
+[mongodb-org-3.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/
+gpgcheck=0
+enabled=1
+```
 
+* install mongodb and start mongod
 ```
-sudo yum install -y docker
-sudo service docker start
-sudo chkconfig docker on
-sudo usermod -a -G docker ec2-user
-# logout and re-login
-docker info
-```
-### dockerizing MongoDB
-
-```
-docker volume create --name data
-docker volume ls
-docker pull mongo
-docker run -p 27017:27017 --name nextin-mongo -d mongo
+sudo yum install -y mongodb-org
+sudo service mongod start
+sudo chkconfig mongod on
 ```
