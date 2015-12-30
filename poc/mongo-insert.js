@@ -1,10 +1,12 @@
+// 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mytest');
 var Schema = mongoose.Schema;
 
 // create a schema
 var userSchema = new Schema({
-  name: String
+  name: String,
+  id: {type: String, required: true, unique: true }
 });
 
 // the schema is useless so far
@@ -14,12 +16,14 @@ var User = mongoose.model('User', userSchema);
 // make this available to our users in our Node applications
 module.exports = User;
 
-var hoyoung = new User({name: 'Hoyoung Jung'}); 
+var hoyoung = new User({name: 'Hoyoung Jung', id: 'honux77'}); 
+//error
+//var hoyoung = new User({name: 'Hoyoung Jung'}); 
 console.log(hoyoung.name);
 
 hoyoung.save(function (err, hoyoung) {
 	if (err)
-		console.log("err");
+		console.log(err);
 	else
 		console.log("saved.");
 });

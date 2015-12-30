@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <body>
 <h1>NHN NEXT student register page</h1>
-<form action="demo_form.asp">
-학번/사번: <input type="text" name="sno" value="1202311"><br>
+<form action="/api/generate" method="post">
+학번/사번: <input type="text" name="sid" value="1202311"><br>
 이메일: <input type="text" name="email" value="next@nhnnext.org"><br>
-이름: <input type="text" name="FirstName" value="Peter Kim"><br>
+이름: <input type="text" name="name" value="정호영"><br>
+선언문: <input type="text" name="msg" value="고기처럼 살자!"><br>
 <input type="submit" value="Submit">
 </form>
 
-<p>Click the "Submit" button and the form-data will be sent to a page on the server called "register.php".</p>
+<p>Click the "Submit" button and the form-data will be sent to a page "/generate"</p>
 
 </body>
 </html>
