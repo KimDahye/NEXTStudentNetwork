@@ -39,8 +39,6 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, email, password, done) {
-        console.log('----------passport-------------');
-        console.log(req.param('name'));
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
@@ -54,6 +52,7 @@ module.exports = function(passport) {
 
             // check to see if theres already a user with that email
             if (user) {
+                console.log('log: email in use');
                 return done(null, false, req.flash('signupMessage', '이메일이 이미 사용중입니다.'));
             } else {
 
@@ -65,16 +64,13 @@ module.exports = function(passport) {
                 newUser.email    = email;
                 newUser.password = newUser.generateHash(password);
                 newUser.name = req.param('name');
-                newUser.id = req.param('id');
                 newUser.gisu = req.param('gisu');
 
                 // save the user
                 newUser.save(function(err) {
                     if (err)
                         throw err;
-                    else {
-                      console.log("user data saved " + newUser);
-                    }
+                    console.log(newUser.email + " data saved");
                     return done(null, newUser);
                 });
             }
