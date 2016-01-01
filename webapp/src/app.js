@@ -9,14 +9,12 @@ var session = require('express-session');
 var mongoose   = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
-
-var configDB = require(path.join(SRC_ROOT,'config/database.js'))
-var secret = configDB.secret;
+var config = require('getconfig'); // see config/README.md
 
 // CONFIGURATION ======================================================
-mongoose.connect(configDB.url);
+mongoose.connect(config.DB.url);
 
-require(path.join(SRC_ROOT,'config/passport'))(passport);
+require('./passport/passport')(passport);
 
 var app = express();
 app.set('views', VIEW_ROOT);
@@ -25,15 +23,7 @@ app.use(express.static(PUBLIC_ROOT));
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(cookieParser());
-app.use(session({
-  name: 'next_network',
-  secret: secret,
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 3600000 // 1 hour
-  }
-}));
+app.use(session(config.session));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

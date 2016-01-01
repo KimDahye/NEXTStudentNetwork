@@ -1,0 +1,14 @@
+{
+    "DB": {
+        "url": "mongodb://localhost/nextin"
+    },
+    "session": {
+        "name": "next_network",
+        "secret": "ilovenextintxenloveicode",
+        "resave": false,
+        "saveUninitialized": true,
+        "cookie": {
+            "maxAge": 3600000
+        }
+    }
+}
