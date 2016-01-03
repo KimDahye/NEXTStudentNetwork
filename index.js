@@ -2,9 +2,10 @@
 require('./global.js');
 var info = require('debug')('info:www');
 var app = require('./webapp/src/app.js');
-
-app.set('port', 3000);
+var config = require('getconfig'); // see config/README.md
+app.set('port', config.port | process.env.PORT);
 
 var server = app.listen(app.get('port'), function() {
   info('Express server listening on port ' + server.address().port);
+  console.log('NEXTIN server listening on port ' + server.address().port);
 });
