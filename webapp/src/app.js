@@ -14,7 +14,7 @@ var config = require('getconfig'); // see config/README.md
 // CONFIGURATION ======================================================
 mongoose.connect(config.DB.url);
 
-require('./passport/passport')(passport);
+require(path.join(SRC_ROOT,'passport/passport'))(passport);
 
 var app = express();
 app.set('views', VIEW_ROOT);
