@@ -1,67 +1,29 @@
-# NEXT Student Network 페이지 만들기 프로젝트!!!
+# nextin.me 프로젝트 (v.0.2)
 
 ## 목적
 * 우리가 어떤 비전을 가진 사람들인지 세상에 알린다.
 
 ## 어떻게?
 * motivation page: http://web.wellesley.edu/thenetwork/#
-일단 이 페이지를 [거의 똑같이 따라해보는 것](http://125.209.198.141/)인데요... 호버링 했을 때의 내용이 조금 다른 게 포인트라면 포인트입니다.
+* 위의 motivation page를 똑같이 따라해서 보여준다. (도메인은 nextin.me)
+* 다만 우리는 hovering 했을 때, 짧은 소개글(타이틀, 출신, 비전선언서)을 보여주고,
+* 사진을 클릭하면 youtube 링크의 동영상과 개인이 편집한 markdown 다큐먼트를 보여준다. 
+* 회원가입(로그인) 및 프로필 편집, 관리자 페이지는 별도의 도메인에서 처리한다.
+* 회원가입하면 누구나 프로필을 편집할 수 있으나, 관리자가 승인한 사용자의 프로필만 nextin.me 메인페이지에 등록된다.
 
-* 학생들과 교수님, 또 동참하시는 선생님들의 사진을 모티베이션 페이지 처럼 찍는다.
+## 진행 상황
+* 오프라인 모임 2회 진행
+  * 백엔드, 프론트 엔드 아키텍쳐 정리
+  * UI 플로우 정리
+  * 자세한 건 [wiki](https://github.com/KimDahye/NEXTStudentNetwork/wiki)의 회의록을 참고해주세요!
 
-* 한 사람의 사진 위에 마우스가 올라가면, 짧은 소개글(타이틀, 출신, 비전선언서)을 보여준다.
-ex) 나무처럼 살고픈 김다혜 (15자 이내로)/
-	KAIST 수리과학과 졸업/
-	소프트웨어를 통해, 공동체의 가치를 이루고 싶습니다. (30자 이내로)
+## milestone
+* 1차 데모(2016년 2월 3일): 관리자페이지, 메인 페이지 돌아가는 수준으로 완성하자.
 
-* 여기서 더 나가자면, 얼굴을 클릭했을 때 짧은 인터뷰 영상을 보여준다.  
+## 개발 참여
+* 개발, 협업 문화
+  * master에는 배포용 코드만 올린다.
+  * dev에 merge하는 것은 반드시 pull request를 통해 다른 사람의 code review를 받고 올린다.
+* 개발에 참여 하실 분들은 다혜 카톡으로 github 계정 알려주세요.
 
-## 자원 받습니다
-* 사진 찍으실 분, 영상찍으실 분 자원 받습니다.
-* 여러분들 소개글을 제가 판 github에 올려주세요.
 
-# Welcome to developers group
-## Developers
-| Role             | Contributors           | Description           |
-|:----------------:| ---------------------- |:--------------------- |
-| Product manager  | KimDahye               |                       |
-| Design           | Shinyoung Park         | Main logo design      |
-| Web engineer     | helloheesu             |                       |
-| Android engineer | Jaebong Lee            |                       |
-| CI, server infra | cocagolau              | Jenkins, ubuntu 12.04 |
-| Data parsing     | cocagolau              | python                |
-| Database         | reaperes, cocagolau    | mysql                 |
-| Server engineer  | reaperes               | node.js server        |
-
-개발에 참여 하실 분들은 **다혜에게 github 계정을 알려주시고**, **developers group 대화방에
-초대해 달라고 요청**하시면 됩니다. 누구든 환영합니다!!
-
-## APIs
-* [GET /students?num=[Number]] (#get-student-profiles)
-
-## Error response (status code 400)
-		{
-			'errors': [{
-					'code': 10,
-					'message': 'Error text here.'
-				},
-				...
-			]
-		}
-
-| Code | Text                                | Description                                                           |
-|:----:| ----------------------------------- | --------------------------------------------------------------------- |
-| 10   | Required parameter is not defined   | Should define required parameters                                     |
-| 20   | Parameter is invalid                | Should correct parameter name                                         |
-
-### Get student profiles
-
-		Request
-		GET /students?num=[Number]
-
-		Response
-		{
-			data: [{
-				(nameKor, nameEng, majorKor, majorEng, imgName, title, vision, movieUrl)
-			}]
-		}
