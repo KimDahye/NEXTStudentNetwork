@@ -11,31 +11,38 @@
 	<div id="wrapper">
 		<section>
 			<ul class="_item_wrapper">
-
+				<!-- 초기에는 빈 공간 -->
 			</ul>
 		</section>
 	</div>
 
+
+<!-- 개별 아이템을 렌더링 할때 사용할 템플릿 -->
 <script type="text/x-handlebars-template" id="item_template">
 	<li class="_item" data-id="{{name}}">
 		<img src="{{photoUrl}}" width="100" height="100">
 		<p>{{name}}</p>
 		<p>{{declaration}}</p>
-		<div class="data">
+		<!-- 데이터 보관용으로 사용하기 위함 -->
+		<div class="data" style="display:none">
 			<p class="markdownText">{{markdownText}}</p>
 			<p class="youtubeId">{{youtubeId}}</p>
 		</div>
 	</li>
 </script>
+
+<!--템플릿 라이브러리 참고 : https://mustache.github.io/ -->
 <script type="text/javascript" src="https://mustache.github.io/extras/mustache.js"></script>
+
 <script type="text/javascript" src="test/MainController.js"></script>
 <script>
+// 화면에 그려질 아이템들
 var items = [{
-	name : "test1",
-	photoUrl : "test/a1.jpg",
-	youtubeId : "bLoO0FSXncg",
-	markdownText : "#테스트##소제목###주제",
-	declaration : "hi"
+	name : "test1", 			// 학생이름
+	photoUrl : "test/a1.jpg",	// 이미지 주소
+	youtubeId : "bLoO0FSXncg",	// 유튜브
+	markdownText : "#테스트##소제목###주제",	// 마크다운 텍스트
+	declaration : "hi" 			// 선언문
 }, {
 	name : "test2",
 	photoUrl : "test/a2.jpg",

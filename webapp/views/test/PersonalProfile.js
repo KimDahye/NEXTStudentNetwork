@@ -12,6 +12,7 @@ PersonalProfile.prototype = {
 
     init : function(){
         this._initVars();
+        this._attachEvent();
         this._startApplication();
     },
 
@@ -23,9 +24,30 @@ PersonalProfile.prototype = {
     },
 
     _initVars : function(){
-        this._elMainForm = document.querySelector("#main_data form");
-        this._elPopupForm = document.querySelector("#popup_data form");
+        this._elAside = document.querySelector("aside");
+
+        this._elMainForm = document.querySelector(".main form");
+        this._elPopupForm = document.querySelector(".popup form");
         this._elProfilePhoto = this._elMainForm.querySelector(".photo_set");
+    },
+
+    _attachEvent : function(e){
+        this._elAside.addEventListener("click", this._onClickAside, false);
+    },
+
+    _onClickAside : function(e){
+        var type = e.target.getAttribute("data-type");
+        console.log(type);
+        var doms = document.querySelectorAll(".data");
+
+        for(var i=0 ; i< doms.length ; i++){
+            var sDisplay = "none";
+
+            if(doms[i].className.indexOf(type) > -1){
+                sDisplay = "block";
+            }
+            doms[i].style.display = sDisplay;
+        }
     },
 
     fillForm : function(htData){

@@ -9,8 +9,13 @@
 </head>
 <body>
 	<div id="wrapper">
+		<aside>
+			<input type="button" value="타일데이터입력하기" data-type="main">
+			<input type="button" value="팝업데이터입력하기" data-type="popup">
+		</aside>
 		<!-- 메인에 보여질 데이터를 입력하는 구역 -->
-		<section id="main_data">
+		<section class="main data" style="display: block;">
+			<!-- TODO 사진 업로드 관련 이슈 등록하기 -->
 			<form action="/profile" method="post">
 				<div class="photo_set">
 					<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100" height="100">
@@ -22,7 +27,7 @@
 		</section>
 
 		<!-- 팝업에 보여질 데이터를 입력하는 구역 -->
-		<section id="popup_data">
+		<section class="popup data" style="display: block;">
 			<form action="/detail" method="post">
 				<input name="youtubeId" type="text" /></br>
 				<textarea name="markdownText"></textarea></br>
@@ -34,10 +39,10 @@
 	<script type="text/javascript" src="test/PersonalProfile.js"></script>
 	<script>
 		var personalData = {
-			photoUrl : "test/a2.jpg",
-			declaration : "안녕하새오",
-			youtubeId : "KnlLQTpKurs",
-			markdownText : "#h1##h2"
+			photoUrl : "test/a1.jpg",	// 이미지 주소
+			youtubeId : "bLoO0FSXncg",	// 유튜브
+			markdownText : "#테스트##소제목###주제",	// 마크다운 텍스트
+			declaration : "hi" 			// 선언문
 		};
 
 		var oCtr = new PersonalProfile({
