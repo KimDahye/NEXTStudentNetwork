@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<!-- 파비콘 입력 -->
+	<!-- 메타태그 입력 -->
+	<title>개인정보 입력</title>
+</head>
+<body>
+	<div id="wrapper">
+		<!-- 메인에 보여질 데이터를 입력하는 구역 -->
+		<section id="main_data">
+			<form action="/profile" method="post">
+				<div class="photo_set">
+					<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="100" height="100">
+				</div>
+				<input name="declaration" type="text" />
+				</br>
+				<input type="submit" value="전송">
+			</form>
+		</section>
+
+		<!-- 팝업에 보여질 데이터를 입력하는 구역 -->
+		<section id="popup_data">
+			<form action="/detail" method="post">
+				<input name="youtubeId" type="text" /></br>
+				<textarea name="markdownText"></textarea></br>
+				<input type="submit" value="전송">
+			</form>
+		</section>
+	</div>
+
+	<script type="text/javascript" src="test/PersonalProfile.js"></script>
+	<script>
+		var personalData = {
+			photoUrl : "test/a2.jpg",
+			declaration : "안녕하새오",
+			youtubeId : "KnlLQTpKurs",
+			markdownText : "#h1##h2"
+		};
+
+		var oCtr = new PersonalProfile({
+			htData : personalData
+		});
+	</script>
+</body>
+
+</html>

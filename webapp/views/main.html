@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<!-- 파비콘 입력 -->
+	<!-- 메타태그 입력 -->
+	<title>NEXT Student Network</title>
+</head>
+<body>
+	<div id="wrapper">
+		<section>
+			<ul class="_item_wrapper">
+
+			</ul>
+		</section>
+	</div>
+
+<script type="text/x-handlebars-template" id="item_template">
+	<li class="_item" data-id="{{name}}">
+		<img src="{{photoUrl}}" width="100" height="100">
+		<p>{{name}}</p>
+		<p>{{declaration}}</p>
+		<div class="data">
+			<p class="markdownText">{{markdownText}}</p>
+			<p class="youtubeId">{{youtubeId}}</p>
+		</div>
+	</li>
+</script>
+<script type="text/javascript" src="https://mustache.github.io/extras/mustache.js"></script>
+<script type="text/javascript" src="test/MainController.js"></script>
+<script>
+var items = [{
+	name : "test1",
+	photoUrl : "test/a1.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}, {
+	name : "test2",
+	photoUrl : "test/a2.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}, {
+	name : "test3",
+	photoUrl : "test/a3.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}, {
+	name : "test4",
+	photoUrl : "test/a4.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}, {
+	name : "test5",
+	photoUrl : "test/a5.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}, {
+	name : "test6",
+	photoUrl : "test/a6.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}, {
+	name : "test7",
+	photoUrl : "test/a7.jpg",
+	youtubeId : "bLoO0FSXncg",
+	markdownText : "#테스트##소제목###주제",
+	declaration : "hi"
+}];
+
+new MainController({
+	aData : items
+});
+</script>
+</body>
+
+</html>
