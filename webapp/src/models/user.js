@@ -10,7 +10,13 @@ var userSchema = mongoose.Schema({
   password: {type:String, required: true},
   class: String,
   eng_name: String,
-  confirm: Boolean
+  confirm: Boolean,
+  profile: {
+    photourl: String,
+    moto: String,
+    markdown: String,
+    movieurl: String
+  }
 });
 
 // methods ======================

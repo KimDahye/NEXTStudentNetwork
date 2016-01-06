@@ -1,6 +1,7 @@
 // load all the things we need
 var path = require('path');
 var LocalStrategy   = require('passport-local').Strategy;
+var config = require('getconfig');
 
 // load up the user model
 var User            = require(path.join(SRC_ROOT,'models/user'));
@@ -67,7 +68,7 @@ module.exports = function(passport) {
                 newUser.class = req.param('class');
                 newUser.eng_name = req.param('eng_name');
                 newUser.confirm = false;
-
+                newUser.profile = config.profile;
 
                 // save the user
                 newUser.save(function(err) {
@@ -113,7 +114,6 @@ module.exports = function(passport) {
             if (!user.validPassword(password))
                 return done(null, false, req.flash('loginMessage', '패스워드가 틀렸습니다.')); // create the loginMessage and save it to session as flashdata
 
-            // all is well, return successful user
             return done(null, user);
         });
     }));
