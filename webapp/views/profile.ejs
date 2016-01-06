@@ -16,7 +16,6 @@
         <a href="/logout" class="btn btn-default btn-sm">로그아웃</a>
     </div>
 
-<%= typeof user %>
     <div class="row">
         <div class = "col-sm-3"> </div>
         <!-- LOCAL INFORMATION -->
@@ -30,7 +29,8 @@
                         <strong>email</strong>: <%= user.email %><br>
                         <strong>기수</strong>: <%= user.class %><br>
                         <strong>승인여부</strong>: <%= user.confirm %><br>
-                        <strong>프로필</strong>: <%= user.profile %>
+                        <strong>프로필</strong>:
+                         <%= JSON.stringify(user.profile) %>
                     </p>
             </div>
         </div>
