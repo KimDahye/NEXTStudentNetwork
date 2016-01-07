@@ -1,3 +1,8 @@
 language: node_js
 node_js:
   - "4"
+deploy:
+  provider: heroku
+  app: nnext
+  api_key: 
+    secure: aFP//RG+SUV5K+/kOvEWose7t48wn1PIgB/kFX9atTTzoUqxwAJFP6//bL48oXvmPD7zyafe1WFNeshiCD9hG2iAaekpe279olCNzRfPLw6cPcwaNEEXq99aMIE2gfup/rAtZ0SxiXbP94st45W8ldN7TxCB7EWmAwKdDXsczbQPDWmnFmMviE1aGWibp5nvM1MJ1XEcl4/6orWNnF21q0kFO6rwVpFYWFd$
