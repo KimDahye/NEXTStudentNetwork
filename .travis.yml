@@ -5,7 +5,7 @@ deploy:
   provider: heroku
   app: nnext
   api_key: 
-    - secure: OvWlj4IM5rFIbEFGuf1ceTfjVJmcocwfGMYDGbLGW848iav+gfklHE19K7Y0RS3lfYquQlicHcKFc3R0JS6SbuoksPfTlzU8h3CAsw8w5BzlGG0kSju2x8c7bklYn5i9hoZN9+mr+hAHCRZd2Z2G/CJv6f5uNWzsq5+ieRArv2wR/io5JCa9aFkyMVbYfIFePahxdehMewXnL7qUjcC38XtSj3hichlAs$
+    secure: "B/obxFtKZMWgiBB7cUd349CkfnFcTWewwBxUZIKoc+NEjHX/2znOPS+/Ag+Kbhr3f7RkhF+s/F8cHzX+81z8yvxTLlhIZc8xudmt6mKhpZmnoNuMT91+XbppvEF1gN1m0ff+jhkEv5mNBeKEZQlokcVBizj2dmx0Zp8sr7bwzzihcUEIerxLZKS8Ijnfkvdr/p2SBVa1bSah9aBz1UuNfG8RqnvoP9IMj+emUdkGoSjllKCOsvkupBZ+SdIvHYJJ4WfoZ0VLT8XRt/r7FxrdT/ov77afsbtAfK7iDKgE1zNfZIawu2bLsC3I5PZa9DUUfpuxw7AQ9FaDpr8vBuMUWhPnk4RMkcOo6QotPaUO9qa+g1MWLNzl735tb+qXlydvfoqPtfFD8RpCr90oEFXTVl07C2TZApR0GlMUQIs4/eSwooeubCKnZQqwCljxG3PaFNZR6g/KUlQMPKa62eb6WkkzNjQ2dmItiBuWYBcx5EjrWUXQmKPoG4lX7q/XS86M7vMyMk3/yjSNX9ncOX1v78EERsYyJiu2JQ/C/sjEY1rCGHX6LDfZVLCJa+2AyFnUdFhQTA9rrRRx6vd0e9xcIMgnolOS/WRkMZGd7maj8tZdB5y+6CyLBgF6TRRz7wmqQM8s+Said0mLKJfB93coC9spq/uumAIYH4ILv5YyZPs="
   on:
     repo: pjc02478/NEXTStudentNetwork
     branch: master
