@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "preinstall": "node install -g bower",
+    "preinstall": "npm install -g bower",
     "postinstall": "bower install",
     "test": "mocha webapp/test --require global.js --recursive --ui bdd --reporter spec"
   },
