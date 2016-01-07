@@ -5,7 +5,7 @@ deploy:
   provider: heroku
   app: nnext
   api_key: 
-    secure: OvWlj4IM5rFIbEFGuf1ceTfjVJmcocwfGMYDGbLGW848iav+gfklHE19K7Y0RS3lfYquQlicHcKFc3R0JS6SbuoksPfTlzU8h3CAsw8w5BzlGG0kSju2x8c7bklYn5i9hoZN9+mr+hAHCRZd2Z2G/CJv6f5uNWzsq5+ieRArv2wR/io5JCa9aFkyMVbYfIFePahxdehMewXnL7qUjcC38XtSj3hichlAs$
+    - secure: OvWlj4IM5rFIbEFGuf1ceTfjVJmcocwfGMYDGbLGW848iav+gfklHE19K7Y0RS3lfYquQlicHcKFc3R0JS6SbuoksPfTlzU8h3CAsw8w5BzlGG0kSju2x8c7bklYn5i9hoZN9+mr+hAHCRZd2Z2G/CJv6f5uNWzsq5+ieRArv2wR/io5JCa9aFkyMVbYfIFePahxdehMewXnL7qUjcC38XtSj3hichlAs$
   on:
     repo: pjc02478/NEXTStudentNetwork
     branch: master
