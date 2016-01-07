@@ -34,8 +34,7 @@
                         <strong>email</strong>: <%= user.email %><br>
                         <strong>기수</strong>: <%= user.class %><br>
                         <strong>승인여부</strong>: <%= user.confirm %><br>
-                        <strong>프로필</strong>:
-                         <%= JSON.stringify(user.profile) %>
+                        <strong>프로필</strong>: <%= JSON.stringify(user.profile) %>
                     </p>
             </div>
         </div>
@@ -44,6 +43,6 @@
 </div>
 </body>
   <script>  
-  var dataObject = <%-JSON.stringify(user) %>;
+    var dataObject = <%-JSON.stringify(user) %>;
   </script>
 </html>

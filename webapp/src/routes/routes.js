@@ -39,13 +39,37 @@ module.exports = function(app, passport) {
         var userData = req.user.toObject();
 
         if (!!userData.password) {
-        delete userData.password;
+            delete userData.password;
         }
        
         res.render('profile.ejs', {
             user : userData // get the user out of session and pass to template
         });
     });
+
+    // update user's photourl, moto as requested. 
+    app.put('/profile', isLoggedIn, function(req, res) {
+        //TODO. CONSTANT로 따로 빼서 모을 수 있음 좋겠다. 
+        var STATUS_FAIL = "fail",
+            STATUS_SUCCESS = "success",
+            MESSAGE_ERROR = "DB에 email이 존재하지 않습니다.",
+            MESSAGE_NON = "";
+
+        // body parser를 쓴다는 가정하에 아래 코드가 동작한다.
+        User.findOne({ 'email' :  req.user.email }, function(err, user) {
+            // if there are any errors, return the error
+            if (err) {
+                res.json({"status": STATUS_FAIL, "message": MESSAGE_ERROR});
+            }
+
+            //update user
+            user.profile.photourl = req.body.photourl;
+            user.profile.moto = req.body.moto;
+            user.save();
+            res.json({"status": STATUS_SUCCESS, "message": MESSAGE_NON});
+        });
+    });
+
 
     // =====================================
     // LOGOUT ==============================
