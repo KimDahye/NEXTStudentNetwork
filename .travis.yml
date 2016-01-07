@@ -5,4 +5,4 @@ deploy:
   provider: heroku
   app: nnext
   api_key: 
-    secure: aFP//RG+SUV5K+/kOvEWose7t48wn1PIgB/kFX9atTTzoUqxwAJFP6//bL48oXvmPD7zyafe1WFNeshiCD9hG2iAaekpe279olCNzRfPLw6cPcwaNEEXq99aMIE2gfup/rAtZ0SxiXbP94st45W8ldN7TxCB7EWmAwKdDXsczbQPDWmnFmMviE1aGWibp5nvM1MJ1XEcl4/6orWNnF21q0kFO6rwVpFYWFd$
+    secure: W66HHSiSA1AKb4E0wowbdpeXGrTneCRl22X6xG+JkzK9jFr/I6xKuFxaN9l3BJaN9Ry8Zm2c1/ASY8sAMM6KBDDrrkYImyeXLujU7+eGdaL25wasZzH60yHqNp6rekVwe510GOakr+hv1fT28pDKk7ftizNvayD1CiWHzTdKH8UvBjp+TagGPjuB33LoqzyZmJxSxbZcvSMHnRtZCf+OrCQIdml/5HIOBrU$
