@@ -5,3 +5,7 @@ node_modules/
 
 # for Namhoon
 test.js
+
+# MAC DS_STORE
+webapp/.DS_Store
+webapp/views/.DS_Store
