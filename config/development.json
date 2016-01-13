@@ -17,5 +17,11 @@
       "moto": "즐겁게 살자",
       "markdown": "###여기에 markdown 형식의 프로필을 넣어 주세요.",
       "movieurl": "youtube url here"
+    },
+    "CONSTANT": {
+      "STATUS_FAIL": "fail",
+      "STATUS_SUCCESS": "success",
+      "MESSAGE_ERROR": "DB에 email이 존재하지 않습니다.",
+      "MESSAGE_NON": ""
     }
 }
