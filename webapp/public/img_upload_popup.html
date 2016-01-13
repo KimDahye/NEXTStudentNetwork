@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+
+    <script src="/javascripts/jquery.js"></script>
+    <title>이미지 전송</title>
+</head>
+<body>
+    <form method="get" action="/img_upload_popup_response.html"  enctype="multipart/form-data" name="uploadform">
+        <input type="file" name="imagefile" id="imagefile">
+    </form>
+    <button>확인</button>
+    <script>
+        $("button").on("click", $.proxy(function(){
+            console.log("aa");
+            $("form").get(0).submit();
+//            self.close();
+        }, this));
+
+    </script>
+</body>
+
+</html>
