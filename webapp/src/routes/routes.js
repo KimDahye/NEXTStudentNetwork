@@ -67,6 +67,23 @@ module.exports = function(app, passport) {
         });
     });
 
+    app.put('/detail', isLoggedIn, function(req, res) {
+        var CONSTANT = config.CONSTANT;
+
+        User.findOne({ 'email' :  req.user.email }, function(err, user) {
+            // if there are any errors, return the error
+            if (err) {
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR});
+            }
+
+            //update user
+            user.profile.markdown = req.body.markdown;
+            user.profile.movieurl = req.body.movieurl;
+            user.save();
+            res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_NON});
+        });
+
+    });
 
     // =====================================
     // LOGOUT ==============================
