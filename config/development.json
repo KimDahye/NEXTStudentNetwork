@@ -23,5 +23,8 @@
       "STATUS_SUCCESS": "success",
       "MESSAGE_ERROR": "DB에 email이 존재하지 않습니다.",
       "MESSAGE_NON": ""
+    },
+    "adminList": {
+      "0": "test@gmail.com"
     }
 }
