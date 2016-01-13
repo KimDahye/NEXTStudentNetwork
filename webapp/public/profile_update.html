@@ -18,9 +18,9 @@
     <div id="wrapper">
         <!-- 메인 영역에 들어갈 정보 -->
         <section id="core_info">
-            <form action="/upload">
+            <form action="/profile">
                 <!-- 사진업로드 -->
-                <input class="fileupload" type="file" name="profilePhoto" value="프로필 사진"/>
+                <input class="fileupload" type="button" value="프로필 사진 업로드"/>
 
                 <!-- 사진미리보기 -->
                 <style>
@@ -43,9 +43,9 @@
 
         <!-- 내설명 영역에 들어갈 정보 -->
         <section id="desc_info">
-            <form action="/upload">
+            <form action="/detail">
                 <!--동영상링크-->
-                <input type="text" name="youtubeLink" placeholder="유튜브 동영상 주소">
+                <input type="text" name="youtubeVid" placeholder="유튜브 동영상 주소">
                 <!--마크다운-->
                 <textarea name="markdownText" placeholder="마크다운"></textarea>
             </form>
@@ -54,6 +54,18 @@
         <!-- //내설명 영역에 들어갈 정보 -->
     </div>
     <footer></footer>
+
+    <script>
+
+        var htInitData = {
+            userId : 3,
+            profilePhoto : "/images/test2.png",
+            declaration : "안녕하세요",
+            youtubeVid: "bLoO0FSXncg",
+            markdownText : "#반가워요 #이것참 #반갑군요"
+        }
+    </script>
+
     <script>
 
         var ImagePreview = function(ht){
@@ -65,7 +77,13 @@
                 this.$elFileUpload = $(ht.elFileUpload);
                 this.$elPreview = $(ht.elPreview);
 
-                this.$elFileUpload.on("change", $.proxy(this._onChangeFileUpload, this));
+                this.$elFileUpload.on("click", $.proxy(this._onClickFileUpload, this));
+                // this.$elFileUpload.on("change", $.proxy(this._onChangeFileUpload, this));
+            },
+
+            _onClickFileUpload : function(e){
+                console.log("open");
+                window.open("/img_upload_popup.html", "이미지 업로드", "fullscreen=no, width=200, height=200");
             },
 
             //https://jsfiddle.net/0GiS0/Yvgc2/
@@ -105,8 +123,6 @@
                     this.$elPreview.find("canvas").addClass("fit")
                 }, this);
             }
-
-
         };
 
 
@@ -118,10 +134,9 @@
         ProfileUpdate.prototype = {
             init : function(ht){
                 this.option = ht;
-
+                this.$elRoot = $(ht.elRoot);
                 this._initComponent();
                 this._fillData();
-
             },
 
             _initComponent : function(){
@@ -129,21 +144,44 @@
                     elFileUpload : $(".fileupload"),
                     elPreview : $(".preview")
                 });
-            }
+            },
 
+            _fillData : function(){
+                var htData = this.option.htInitData;
+                if(!htData){
+                    // 초기 사용자 데이터 없음
+                    return ;
+                }
+                for (var i in htData){
+                    var input = this.$elRoot.find("[name=" + i + "]");
+                    if(i === "profilePhoto"){
+                        this._fillProfileImage(htData[i]);
+                    } else {
+                        input.val(htData[i]);
+                    }
+                }
+            },
+
+            _fillProfileImage : function(imgUrl){
+                var $preview = this.$elRoot.find(".preview");
+                $preview.html("<img class='fit' src=" + imgUrl + ">");
+            }
         };
 
         /*
             profilePhoto
             declaration
-            youtubeLink
+            youtubeVid
             markdownText
         */
         new ProfileUpdate({
             elRoot : $("#wrapper").get(0)
+//            htInitData : htInitData
         });
 
-
+        function onSavedProfileImage(sFilePath){
+            alert(sFilePath);
+        }
     </script>
 </body>
 </html>
