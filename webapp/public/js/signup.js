@@ -12,7 +12,7 @@ var constraints = {
           message: "이름을 입력해주세요"
       },
       format: {
-          pattern: "([가-힣]){2,4}",
+          pattern: "([가-힣]){2,10}",
           message: "잘못된 한글 이름 입니다."
       }
   },
@@ -32,18 +32,14 @@ var constraints = {
     }
   },
   englishName: {
-      presence: {
-          message: "영문 이름을 입력해주십시요."
-      },
+      presence: false,
       format: {
           pattern: "([a-zA-Z ]){1,}",
           message: "영문 이름은 영어로만 작성해주십시요"
       }
   },
   "class": {
-      presence: {
-          message: "기수를 입력해주십시요."
-      },
+      presence: false,
       format: {
           pattern: "[1-9]",
           message: "기수는 숫자로만 입력해주십시요.\n예) 1기인 경우 '1'"

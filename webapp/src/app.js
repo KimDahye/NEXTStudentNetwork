@@ -21,11 +21,14 @@ app.set('views', VIEW_ROOT);
 app.set('view engine', 'ejs');
 app.use(express.static(PUBLIC_ROOT));
 app.use(morgan('dev'));
-app.use(bodyParser());
 app.use(cookieParser());
 app.use(session(config.session));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+
 app.use(flash());
 
 // routers
