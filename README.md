@@ -1,5 +1,7 @@
 # nextin.me 프로젝트 (v.0.2)
 
+![badge](https://travis-ci.org/pjc02478/NEXTStudentNetwork.svg)<br>
+
 ## 목적
 * 우리가 어떤 비전을 가진 사람들인지 세상에 알린다.
 
