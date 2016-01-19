@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+
+    <script src="/javascripts/jquery.js"></script>
+    <title>회원정보 업데이트</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <div id="wrapper">
+        <!-- 메인 영역에 들어갈 정보 -->
+        <section id="core_info">
+            <form action="/profile">
+                <!-- 사진업로드 -->
+                <input class="fileupload" type="button" value="프로필 사진 업로드"/>
+
+                <!-- 사진미리보기 -->
+                <style>
+                    .preview {
+                        width : 500px;
+                    }
+                    .preview .fit{
+                        width : 100%;
+                    }
+
+                </style>
+                <div class="preview"></div>
+
+                <!-- 선언문 -->
+                <input type="text" name="declaration" placeholder="선언문"/>
+                <input type="button" value="등록">
+            </form>
+        </section>
+        <!-- //메인 영역에 들어갈 정보 -->
+
+        <!-- 내설명 영역에 들어갈 정보 -->
+        <section id="desc_info">
+            <form action="/detail">
+                <!--동영상링크-->
+                <input type="text" name="youtubeVid" placeholder="유튜브 동영상 주소">
+                <!--마크다운-->
+                <textarea name="markdownText" placeholder="마크다운"></textarea>
+            </form>
+            <input type="button" value="등록">
+        </section>
+        <!-- //내설명 영역에 들어갈 정보 -->
+    </div>
+    <footer></footer>
+
+    <script>
+
+        var htInitData = {
+            userId : 3,
+            profilePhoto : "/images/test2.png",
+            declaration : "안녕하세요",
+            youtubeVid: "bLoO0FSXncg",
+            markdownText : "#반가워요 #이것참 #반갑군요"
+        }
+    </script>
+
+    <script>
+
+        var ImagePreview = function(ht){
+            this.init(ht);
+        };
+
+        ImagePreview.prototype = {
+            init : function(ht){
+                this.$elFileUpload = $(ht.elFileUpload);
+                this.$elPreview = $(ht.elPreview);
+
+                this.$elFileUpload.on("click", $.proxy(this._onClickFileUpload, this));
+                // this.$elFileUpload.on("change", $.proxy(this._onChangeFileUpload, this));
+            },
+
+            _onClickFileUpload : function(e){
+                console.log("open");
+                window.open("/img_upload_popup.html", "이미지 업로드", "fullscreen=no, width=200, height=200");
+            },
+
+            //https://jsfiddle.net/0GiS0/Yvgc2/
+            _onChangeFileUpload : function(evt){
+                var oInput = evt.target.files[0];
+                var isNotImage = !oInput.type.match(/^image/);
+
+                if(isNotImage){
+                    alert("이미지 파일만 업로드 해주세요.");
+                    return ;
+                }
+
+                var oReader = new FileReader();
+                $(oReader).on("load", $.proxy(function(e){
+                    var oImageFile = e.target;
+                    var sDataUrl = oImageFile.result;
+                    this._createCanvasImage(sDataUrl);
+                }, this));
+                oReader.readAsDataURL(oInput);
+            },
+
+            _createCanvasImage : function(sDataUrl){
+                var elImage = new Image();
+                elImage.src = sDataUrl;
+                var width = elImage.width;
+                var height = elImage.height;
+
+                elImage.onload = $.proxy(function(){
+                    this.$elPreview.html("");
+                    var elCanvas = document.createElement("canvas");
+                    elCanvas.width = width;
+                    elCanvas.height = height;
+                    var ctx = elCanvas.getContext("2d");
+
+                    ctx.drawImage(elImage,0,0, width, height, 0, 0, width, height);
+                    this.$elPreview.append(elCanvas);
+                    this.$elPreview.find("canvas").addClass("fit")
+                }, this);
+            }
+        };
+
+
+
+
+        var ProfileUpdate = function(ht){
+            this.init(ht);
+        };
+        ProfileUpdate.prototype = {
+            init : function(ht){
+                this.option = ht;
+                this.$elRoot = $(ht.elRoot);
+                this._initComponent();
+                this._fillData();
+            },
+
+            _initComponent : function(){
+                new ImagePreview({
+                    elFileUpload : $(".fileupload"),
+                    elPreview : $(".preview")
+                });
+            },
+
+            _fillData : function(){
+                var htData = this.option.htInitData;
+                if(!htData){
+                    // 초기 사용자 데이터 없음
+                    return ;
+                }
+                for (var i in htData){
+                    var input = this.$elRoot.find("[name=" + i + "]");
+                    if(i === "profilePhoto"){
+                        this._fillProfileImage(htData[i]);
+                    } else {
+                        input.val(htData[i]);
+                    }
+                }
+            },
+
+            _fillProfileImage : function(imgUrl){
+                var $preview = this.$elRoot.find(".preview");
+                $preview.html("<img class='fit' src=" + imgUrl + ">");
+            }
+        };
+
+        /*
+            profilePhoto
+            declaration
+            youtubeVid
+            markdownText
+        */
+        new ProfileUpdate({
+            elRoot : $("#wrapper").get(0)
+//            htInitData : htInitData
+        });
+
+        function onSavedProfileImage(sFilePath){
+            alert(sFilePath);
+        }
+    </script>
+</body>
+</html>
