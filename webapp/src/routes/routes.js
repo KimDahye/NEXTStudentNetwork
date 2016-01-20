@@ -86,6 +86,31 @@ module.exports = function(app, passport) {
     });
 
     // =====================================
+    // ADMIN API ===========================
+    // =====================================
+    app.get('/changeStatus', isAdmin, function(req,res) { 
+        var CONSTANT = config.CONSTANT;
+        console.log("admin authentication success:" + req.user.email)
+        var targetUser = req.targetUser;
+        if (typeof(targetUser) == "undefined") 
+            res.json({"status": CONSTANT.STATUS_FAIL, "message": "인수가 잘못되었습니다."});
+        if(req.target)
+        console.log("target user: " + req.targetUser);
+        User.findOne({ 'email' :  req.targetUser }, function(err, user) {
+            // if there are any errors, return the error
+            if (err) {
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR});
+            }
+
+            var confirm = !user.confirm;
+            user.confirm =  confirm;
+            user.save();
+            res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_CSOK});
+        });
+    });
+    
+
+    // =====================================
     // LOGOUT ==============================
     // =====================================
     app.get('/logout', function(req, res) {
@@ -102,5 +127,14 @@ function isLoggedIn(req, res, next) {
         return next();
 
     // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+
+// route middlewrae to make sure a user is admin
+function isAdmin(req, res, next) {
+    var admins = config.adminlist;
+    if (req.isAuthenticated() && admins.indexOf(req.user.email) != -1)
+        return next();
+    console.log("admin authentication failed");
     res.redirect('/');
 }
