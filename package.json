@@ -23,7 +23,9 @@
     "passport-facebook": "~1.0.2",
     "passport-local": "~0.1.6",
     "swig": "^1.4.2",
-    "xregexp": "^2.0.0"
+    "xregexp": "^2.0.0",
+    "jquery" : "^2.2.0",
+    "blueimp-file-upload" : "^9.11.2"
   },
   "devDependencies": {
     "mocha": "~2.0.1",
