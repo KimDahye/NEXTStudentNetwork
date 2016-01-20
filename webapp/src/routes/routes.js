@@ -81,7 +81,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    // update user's photourl, moto as requested. 
+    // update user's photourl, moto, markdown as requested. 
     app.put('/profile', isLoggedIn, function(req, res) {
         var CONSTANT = config.CONSTANT;
 
@@ -94,6 +94,7 @@ module.exports = function(app, passport) {
             //update user
             user.profile.photourl = req.body.photourl;
             user.profile.moto = req.body.moto;
+            user.profile.markdown = req.body.markdown;
             user.save();
             res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_NON});
         });
