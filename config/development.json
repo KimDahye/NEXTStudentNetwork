@@ -22,6 +22,7 @@
       "STATUS_FAIL": "fail",
       "STATUS_SUCCESS": "success",
       "MESSAGE_ERROR": "DB에 email이 존재하지 않습니다.",
+      "MESSAGE_ERROR_IMAGE_UPLOAD_FAIL" : "이미지 업로드에 실패했습니다.",
       "MESSAGE_NON": ""
     }
 }

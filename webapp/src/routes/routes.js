@@ -1,4 +1,6 @@
 var config = require('getconfig'); 
+var fs = require('fs');
+var formidable = require('formidable');
 
 module.exports = function(app, passport) {
 
@@ -46,6 +48,36 @@ module.exports = function(app, passport) {
        
         res.render('profile.ejs', {
             user : userData // get the user out of session and pass to template
+        });
+    });
+
+    // upload(save) user's photo image. 
+    // it return the relative address of the uploaded image.
+    app.post('/profile/photo', isLoggedIn, function(req, res) {
+        var CONSTANT = config.CONSTANT;
+        var form = new formidable.IncomingForm();
+        
+        form.parse(req, function(err, fields, files) {
+            console.log(files);
+        });
+
+        form.on('end', function(fields, files) {
+            /* Temporary location of our uploaded file */
+            var temp_path = this.openedFiles[0].path;
+            /* The file name of the uploaded file */
+            var file_name = this.openedFiles[0].name;
+            /* Location where we want to copy the uploaded file */
+            var new_location = './webapp/public/peoples/';          
+ 
+            fs.rename(temp_path, new_location + file_name, function(err) {  
+                if (err) {
+                    console.error(err);
+                    res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_IMAGE_UPLOAD_FAIL});
+                } else {
+                    console.log("success!")
+                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "peoples/"+file_name}})
+                }
+            });
         });
     });
 
