@@ -25,7 +25,7 @@
     </header>
 
     <div id="wrapper">
-        <!-- 메인 영역에 들어갈 정보 -->
+        <!-- 개인 프로필 정보 -->
         <section id="core_info">
             <form action="/profile">
                 <!-- 사진업로드 -->
@@ -45,22 +45,14 @@
 
                 <!-- 선언문 -->
                 <input type="text" name="declaration" placeholder= "선언문" value="<%- user.profile.moto%>"/>
+                <!--동영상링크-->
+                <input type="text" name="movieurl" placeholder="유투브 동영상 주소" value="<%- user.profile.movieurl%>">
+                <!--마크다운-->
+                <textarea name="markdown" placeholder="마크다운"><%- user.profile.markdown%></textarea>
                 <input type="button" value="등록">
             </form>
         </section>
-        <!-- //메인 영역에 들어갈 정보 -->
-
-        <!-- 내설명 영역에 들어갈 정보 -->
-        <section id="desc_info">
-            <form action="/detail">
-                <!--동영상링크-->
-                <input type="text" name="youtubeVid" placeholder="유투브 동영상 주소" value="<%- user.profile.movieurl%>">
-                <!--마크다운-->
-                <textarea name="markdownText" placeholder="마크다운"><%- user.profile.markdown%></textarea>
-            </form>
-            <input type="button" value="등록">
-        </section>
-        <!-- //내설명 영역에 들어갈 정보 -->
+        <!-- //개인 프로필 정보 -->
     </div>
     <footer></footer>
 
