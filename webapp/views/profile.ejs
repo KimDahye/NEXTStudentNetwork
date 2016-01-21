@@ -2,47 +2,188 @@
 <html lang="ko">
 <head>
     <title>NEXTIN profile</title>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
+    
     <style>
         body        { padding-top:80px; word-wrap:break-word; }
     </style>
+
+    <!--주희가 추가한 것 -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <script src="/javascripts/jquery.js"></script>
+    <!-- 주희가 추가한 것 끝 -->
+
 </head>
 <body>
-<div class="container center">
+    <header>
+    </header>
 
-    <div class="page-header text-center">
-        <h1>선언문 및 개인 페이지 작성하기</h1>
-        <a href="/logout" class="btn btn-default btn-sm">로그아웃</a>
+    <div id="wrapper">
+        <!-- 개인 프로필 정보 -->
+        <section id="core_info">
+            <form action="/profile">
+                <!-- 사진업로드 -->
+                <input class="fileupload" type="button" value="프로필 사진 업로드"/>
+
+                <!-- 사진미리보기 -->
+                <style>
+                    .preview {
+                        width : 500px;
+                    }
+                    .preview .fit{
+                        width : 100%;
+                    }
+
+                </style>
+                <div class="preview"></div>
+
+                <!-- 선언문 -->
+                <input type="text" name="declaration" placeholder= "선언문" value="<%- user.profile.moto%>"/>
+                <!--동영상링크-->
+                <input type="text" name="movieurl" placeholder="유투브 동영상 주소" value="<%- user.profile.movieurl%>">
+                <!--마크다운-->
+                <textarea name="markdown" placeholder="마크다운"><%- user.profile.markdown%></textarea>
+                <input type="button" value="등록">
+            </form>
+        </section>
+        <!-- //개인 프로필 정보 -->
     </div>
+    <footer></footer>
 
-    <div class="row">
-        <div class = "col-sm-3"> </div>
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> 유저 정보</h3>
+    <script>
+        var dataObject = <%-JSON.stringify(user) %>;
 
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>name</strong>: <%= user.name %><br>
-                        <strong>email</strong>: <%= user.email %><br>
-                        <strong>기수</strong>: <%= user.class %><br>
-                        <strong>승인여부</strong>: <%= user.confirm %><br>
-                        <strong>프로필</strong>: <%= JSON.stringify(user.profile) %>
-                    </p>
-            </div>
-        </div>
-    </div>
+        var htInitData = {
+            userId : dataObject._id,
+            profilePhoto : dataObject.profile.photourl,
+            declaration : dataObject.profile.moto,
+            youtubeVid: dataObject.profile.movieurl,
+            markdownText : dataObject.profile.markdown
+        }
+    </script>
 
-</div>
+    <script>
+
+        var ImagePreview = function(ht){
+            this.init(ht);
+        };
+
+        ImagePreview.prototype = {
+            init : function(ht){
+                this.$elFileUpload = $(ht.elFileUpload);
+                this.$elPreview = $(ht.elPreview);
+
+                this.$elFileUpload.on("click", $.proxy(this._onClickFileUpload, this));
+                // this.$elFileUpload.on("change", $.proxy(this._onChangeFileUpload, this));
+            },
+
+            _onClickFileUpload : function(e){
+                console.log("open");
+                window.open("/img_upload_popup.html", "이미지 업로드", "fullscreen=no, width=200, height=200");
+            },
+
+            //https://jsfiddle.net/0GiS0/Yvgc2/
+            _onChangeFileUpload : function(evt){
+                var oInput = evt.target.files[0];
+                var isNotImage = !oInput.type.match(/^image/);
+
+                if(isNotImage){
+                    alert("이미지 파일만 업로드 해주세요.");
+                    return ;
+                }
+
+                var oReader = new FileReader();
+                $(oReader).on("load", $.proxy(function(e){
+                    var oImageFile = e.target;
+                    var sDataUrl = oImageFile.result;
+                    this._createCanvasImage(sDataUrl);
+                }, this));
+                oReader.readAsDataURL(oInput);
+            },
+
+            _createCanvasImage : function(sDataUrl){
+                var elImage = new Image();
+                elImage.src = sDataUrl;
+                var width = elImage.width;
+                var height = elImage.height;
+
+                elImage.onload = $.proxy(function(){
+                    this.$elPreview.html("");
+                    var elCanvas = document.createElement("canvas");
+                    elCanvas.width = width;
+                    elCanvas.height = height;
+                    var ctx = elCanvas.getContext("2d");
+
+                    ctx.drawImage(elImage,0,0, width, height, 0, 0, width, height);
+                    this.$elPreview.append(elCanvas);
+                    this.$elPreview.find("canvas").addClass("fit")
+                }, this);
+            }
+        };
+
+
+
+
+        var ProfileUpdate = function(ht){
+            this.init(ht);
+        };
+        ProfileUpdate.prototype = {
+            init : function(ht){
+                this.option = ht;
+                this.$elRoot = $(ht.elRoot);
+                this._initComponent();
+                this._fillData();
+            },
+
+            _initComponent : function(){
+                new ImagePreview({
+                    elFileUpload : $(".fileupload"),
+                    elPreview : $(".preview")
+                });
+            },
+
+            _fillData : function(){
+                var htData = this.option.htInitData;
+                if(!htData){
+                    // 초기 사용자 데이터 없음
+                    return ;
+                }
+                for (var i in htData){
+                    var input = this.$elRoot.find("[name=" + i + "]");
+                    if(i === "profilePhoto"){
+                        this._fillProfileImage(htData[i]);
+                    } else {
+                        input.val(htData[i]);
+                    }
+                }
+            },
+
+            _fillProfileImage : function(imgUrl){
+                var $preview = this.$elRoot.find(".preview");
+                $preview.html("<img class='fit' src=" + imgUrl + ">");
+            }
+        };
+
+        /*
+            profilePhoto
+            declaration
+            youtubeVid
+            markdownText
+        */
+        new ProfileUpdate({
+            elRoot : $("#wrapper").get(0)
+//            htInitData : htInitData
+        });
+
+        function onSavedProfileImage(sFilePath){
+            alert(sFilePath);
+        }
+    </script>
 </body>
-  <script>  
-    var dataObject = <%-JSON.stringify(user) %>;
-  </script>
 </html>
