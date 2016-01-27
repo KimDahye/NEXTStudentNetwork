@@ -25,7 +25,8 @@
     "swig": "^1.4.2",
     "xregexp": "^2.0.0",
     "jquery" : "^2.2.0",
-    "blueimp-file-upload" : "^9.11.2"
+    "blueimp-file-upload" : "^9.11.2",
+    "formidable" : "^1.0.17"
   },
   "devDependencies": {
     "mocha": "~2.0.1",

@@ -22,8 +22,9 @@
       "STATUS_FAIL": "fail",
       "STATUS_SUCCESS": "success",
       "MESSAGE_ERROR": "DB에 email이 존재하지 않습니다.",
-      "MESSAGE_NON": "",
-      "MESSAGE_CSOK": "성공적으로 인증 상태를 변경했습니다."
+      "MESSAGE_ERROR_IMAGE_UPLOAD_FAIL" : "이미지 업로드에 실패했습니다.",
+      "MESSAGE_CSOK": "성공적으로 인증 상태를 변경했습니다.",
+      "MESSAGE_NON": ""
     },
-    "adminlist": ["admin@nextin.me", "admin@example.com"]
+    "adminlist": ["admin@nextin.me", "admin@example.com", "badman@nextin.me"]
 }
