@@ -104,7 +104,12 @@ module.exports = function(app, passport) {
     // =====================================
     // ADMIN API ===========================
     // =====================================
-    app.get('/changeStatus', isAdmin, function(req,res) { 
+    app.get('/admin', isAdmin, function(req, res) {
+       var CONSTANT = config.CONSTANT;
+       res.render('admin.ejs');
+    });
+
+    app.put('/changeStatus', isAdmin, function(req,res) { 
         var CONSTANT = config.CONSTANT;
         console.log("admin authentication success:" + req.user.email)
         var targetUser = req.targetUser;
@@ -112,6 +117,7 @@ module.exports = function(app, passport) {
             res.json({"status": CONSTANT.STATUS_FAIL, "message": "인수가 잘못되었습니다."});
         if(req.target)
         console.log("target user: " + req.targetUser);
+
         User.findOne({ 'email' :  req.targetUser }, function(err, user) {
             // if there are any errors, return the error
             if (err) {
@@ -146,11 +152,13 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-// route middlewrae to make sure a user is admin
+// route middleware to make sure the user is admin
 function isAdmin(req, res, next) {
     var admins = config.adminlist;
-    if (req.isAuthenticated() && admins.indexOf(req.user.email) != -1)
-        return next();
-    console.log("admin authentication failed");
-    res.redirect('/');
+    if (!req.isAuthenticated())
+        res.send(401,'Unauthorized.');
+    else if (admins.indexOf(req.user.email) == -1)
+        res.send(550,'Permission denied.');
+    //ok, now you are admin!
+    else return next();        
 }
