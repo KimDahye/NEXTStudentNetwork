@@ -1,0 +1,21 @@
+{
+  "name": "NEXTStudentNetwork",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/KimDahye/NEXTStudentNetwork",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "directory": "/webapp/public",
+  "dependencies": {
+    "validate": "validate.js#~0.9.0",
+    "bootstrap": "~3.3.6",
+    "components-font-awesome": "~4.5.0"
+  }
+}

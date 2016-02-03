@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="ko">
+<head>
+    <title>NEXTIN Signup</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+    </style>
+    <script src="/bower_components/validate/validate.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-sign-in"></span> NEXTIN 회원가입</h1>
+
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+    <form action="/signup" method="post" name="signup" onsubmit="return validateForm()">
+      <div class="form-group">
+          <label>이메일</label>
+          <input type="text" class="form-control" name="email">
+      </div>
+      <div class="form-group">
+          <label>이름</label>
+          <input type="text" class="form-control" name="name">
+      </div>
+        <div class="form-group">
+            <label>패스워드</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+            <label>패스워드 확인</label>
+            <input type="password" class="form-control" name="confirm_password">
+        </div>
+        <div class="form-group">
+            <label>영문이름</label>
+            <input type="text" class="form-control" name="english_name">
+        </div>
+        <div class="form-group">
+            <label>기수</label>
+            <input type="text" class="form-control" name="class">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">가입요청</button>
+    </form>
+    <hr>
+    <p>계정이 있으신가요? <a href="/">로그인</a></p>
+</div>
+
+</div>
+<script src="/js/signup.js"></script>
+</body>
+</html>

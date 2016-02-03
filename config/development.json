@@ -1,0 +1,33 @@
+{
+    "DB": {
+        "url": "mongodb://localhost/nextin"
+    },
+    "session": {
+        "name": "next_network",
+        "secret": "ilovenextintxenloveicode",
+        "resave": false,
+        "saveUninitialized": true,
+        "cookie": {
+            "maxAge": 3600000
+        }
+    },
+    "port": 3000,
+    "profile": {
+      "photourl": "./peoples/sample.png",
+      "moto": "즐겁게 살자",
+      "markdown": "###여기에 markdown 형식의 프로필을 넣어 주세요.",
+      "movieurl": "youtube url here"
+    },
+    "CONSTANT": {
+      "STATUS_FAIL": "fail",
+      "STATUS_SUCCESS": "success",
+      "MESSAGE_ERROR": "DB에 email이 존재하지 않습니다.",
+      "MESSAGE_ERROR_IMAGE_UPLOAD_FAIL" : "이미지 업로드에 실패했습니다.",
+      "MESSAGE_CSOK": "성공적으로 인증 상태를 변경했습니다.",
+      "MESSAGE_ERROR_NOUSER": "해당 email이 없습니다.",
+      "MESSAGE_ERROR_PARAM": "paramater가 잘못되었습니다.",
+      "MESSAGE_ERROR_DB": "DB 오류가 발생했습니다.",
+            "MESSAGE_NON": ""
+    },
+    "adminlist": ["admin@nextin.me", "admin@example.com", "badman@nextin.me"]
+}

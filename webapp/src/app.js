@@ -1,34 +1,40 @@
+// SET UP ======================================================
+
 var path = require('path');
 var express = require('express');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose   = require('mongoose');
-//mongoose.connect('mongodb://localhost/nextin');
+var passport = require('passport');
+var flash = require('connect-flash');
+var config = require('getconfig'); // see config/README.md
 
-// Express configuration
+// CONFIGURATION ======================================================
+mongoose.connect(config.DB.url);
+
+require(path.join(SRC_ROOT,'passport/passport'))(passport);
+
 var app = express();
 app.set('views', VIEW_ROOT);
 app.set('view engine', 'ejs');
 app.use(express.static(PUBLIC_ROOT));
-app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(session({
-  name: 'next_network',
-  secret: 'Jangre',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 3600000 // 1 hour
-  }
-}));
+app.use(session(config.session));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+
+app.use(flash());
 
 // routers
-var indexRouter = require(path.join(SRC_ROOT, 'routes/index.js'));
-app.use('/', indexRouter);
+require(path.join(SRC_ROOT,'routes/routes.js'))(app, passport);
 
+/*
 // Error handling
 app.use(function(req, res, next) {
   var err = new Error('Not found');
@@ -40,5 +46,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send(err.message);
 });
+*/
 
 module.exports = app;
