@@ -1,6 +1,9 @@
+var path = require('path');
 var config = require('getconfig'); 
 var fs = require('fs');
 var formidable = require('formidable');
+var User = require(path.join(SRC_ROOT,'models/user'));
+
 
 module.exports = function(app, passport) {
 
@@ -111,24 +114,27 @@ module.exports = function(app, passport) {
 
     app.put('/changeStatus', isAdmin, function(req,res) { 
         var CONSTANT = config.CONSTANT;
-        console.log("admin authentication success:" + req.user.email)
-        var targetUser = req.targetUser;
+        var targetUser = req.body.target;
+        
+        console.log(targetUser)
         if (typeof(targetUser) == "undefined") 
-            res.json({"status": CONSTANT.STATUS_FAIL, "message": "인수가 잘못되었습니다."});
-        if(req.target)
-        console.log("target user: " + req.targetUser);
-
-        User.findOne({ 'email' :  req.targetUser }, function(err, user) {
-            // if there are any errors, return the error
-            if (err) {
-                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR});
-            }
-
-            var confirm = !user.confirm;
-            user.confirm =  confirm;
-            user.save();
-            res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_CSOK});
-        });
+            res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_PARAM});
+        else {
+            console.log("target user: " + targetUser);
+            User.findOne({'email': targetUser}, function(err,user){
+                if(err) {
+                    res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
+                } else if(!user)  {
+                    res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_NOUSER});
+                } else {
+                    console.log("Change status for" + user.email, ", confirm: " + user.confirm);
+                    var confirm = !user.confirm;
+                    user.confirm =  confirm;
+                    user.save();
+                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_CSOK});
+                }
+            });
+        }
     });
     
 
