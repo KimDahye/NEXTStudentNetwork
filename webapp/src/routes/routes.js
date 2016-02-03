@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
     successRedirect : '/profile', // redirect to the secure profile section
     failureRedirect : '/', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
-}));
+    }));
 
     // =====================================
     // SIGNUP ==============================
@@ -32,7 +32,7 @@ module.exports = function(app, passport) {
     successRedirect : '/profile', // redirect to the secure profile section
     failureRedirect : '/signup', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
-}));
+    }));
 
     // =====================================
     // PROFILE SECTION =====================
@@ -75,7 +75,7 @@ module.exports = function(app, passport) {
                     res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_IMAGE_UPLOAD_FAIL});
                 } else {
                     console.log("success!")
-                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "peoples/"+file_name}})
+                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "./peoples/"+file_name}})
                 }
             });
         });
@@ -84,19 +84,19 @@ module.exports = function(app, passport) {
     // update user's photourl, moto, markdown as requested. 
     app.put('/profile', isLoggedIn, function(req, res) {
         var CONSTANT = config.CONSTANT;
-
-        User.findOne({ 'email' :  req.user.email }, function(err, user) {
-            // if there are any errors, return the error
+        var user = req.user;
+        console.log(req.body.photourl);
+        user.profile.photourl = (req.body.photourl === undefined) ? "./peoples/sample.png" : req.body.photourl;
+        user.profile.moto = req.body.moto;
+        user.profile.markdown = req.body.markdown;
+        user.profile.movieurl = req.body.movieurl;
+        console.log(user.profile);
+        user.save(function(err) {
             if (err) {
-                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR});
+                throw err;
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_NON});
             }
-
-            //update user
-            user.profile.photourl = req.body.photourl;
-            user.profile.moto = req.body.moto;
-            user.profile.markdown = req.body.markdown;
-            user.profile.movieurl = req.body.movieurl;
-            user.save();
+            console.log(user.email + " data updated");
             res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_NON});
         });
     });
