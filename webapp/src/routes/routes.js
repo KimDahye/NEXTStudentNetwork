@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
 
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/profile', // redirect to the secure profile section
+    successRedirect : '/admin', // redirect to the secure profile section
     failureRedirect : '/', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
 }));
@@ -137,6 +137,19 @@ module.exports = function(app, passport) {
         }
     });
     
+    //get all lists of same status
+    app.get('/admin/list', isAdmin, function(req,res) { 
+        var CONSTANT = config.CONSTANT;
+        var status = req.query.confirm =="true";
+
+        User.find({"confirm": status}).select({"_id":0, "name":1, "email":1, "confirm":1, "profile":1}).exec(function(err, users) {
+            if(err) {
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
+            } else {
+                res.json({"users": users});
+            }
+        });
+    });    
 
     // =====================================
     // LOGOUT ==============================
@@ -160,11 +173,19 @@ function isLoggedIn(req, res, next) {
 
 // route middleware to make sure the user is admin
 function isAdmin(req, res, next) {
-    var admins = config.adminlist;
     if (!req.isAuthenticated())
         res.send(401,'Unauthorized.');
-    else if (admins.indexOf(req.user.email) == -1)
-        res.send(550,'Permission denied.');
+    else if (!adminCheck(req.user.email)) {
+        if (req.method == "GET")
+            res.redirect('/profile');
+        else
+            res.send(550,'Permission denied.');
+    }
     //ok, now you are admin!
     else return next();        
+}
+
+function adminCheck(email) {
+    var admins = config.adminlist;
+    return (admins.indexOf(email) != -1);
 }
