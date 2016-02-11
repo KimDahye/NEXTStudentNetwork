@@ -29,7 +29,7 @@
         <section id="core_info">
             <form action="/profile">
                 <!-- 사진업로드 -->
-                <input class="fileupload" type="button" value="프로필 사진 업로드"/>
+                <input class="fileupload" type="button" name="photourl" value="프로필 사진 업로드"/>
 
                 <!-- 사진미리보기 -->
                 <style>
@@ -44,12 +44,13 @@
                 <div class="preview"></div>
 
                 <!-- 선언문 -->
-                <input type="text" name="declaration" placeholder= "선언문" value="<%- user.profile.moto%>"/>
+                <input type="text" name="moto" placeholder= "선언문" />
                 <!--동영상링크-->
-                <input type="text" name="movieurl" placeholder="유투브 동영상 주소" value="<%- user.profile.movieurl%>">
+                <input type="text" name="movieurl" placeholder="유투브 동영상 주소" >              
+
                 <!--마크다운-->
-                <textarea name="markdown" placeholder="마크다운"><%- user.profile.markdown%></textarea>
-                <input type="button" value="등록">
+                <textarea name="markdown" placeholder="마크다운"></textarea>
+                <input class="profileupload" type="button" value="등록">
             </form>
         </section>
         <!-- //개인 프로필 정보 -->
@@ -61,10 +62,10 @@
 
         var htInitData = {
             userId : dataObject._id,
-            profilePhoto : dataObject.profile.photourl,
-            declaration : dataObject.profile.moto,
-            youtubeVid: dataObject.profile.movieurl,
-            markdownText : dataObject.profile.markdown
+            photourl : dataObject.profile.photourl,
+            moto : dataObject.profile.moto,
+            movieurl: dataObject.profile.movieurl,
+            markdown : dataObject.profile.markdown
         }
     </script>
 
@@ -127,18 +128,28 @@
             }
         };
 
-
-
-
         var ProfileUpdate = function(ht){
             this.init(ht);
         };
+
         ProfileUpdate.prototype = {
             init : function(ht){
                 this.option = ht;
                 this.$elRoot = $(ht.elRoot);
+                this.$elButton = $(ht.elButton);
                 this._initComponent();
                 this._fillData();
+                this.$elButton.on("click", $.proxy(function(){
+                    console.log("profile upload button clicked");
+                    $.ajax({
+                      type: "PUT",
+                      url: "/profile",
+                      data: $('#core_info form').serialize(),
+                      success: function(data, textStatus, jqXHR) {
+                        alert('everything was OK');
+                      }
+                    });
+                }));
             },
 
             _initComponent : function(){
@@ -149,14 +160,14 @@
             },
 
             _fillData : function(){
-                var htData = this.option.htInitData;
+                var htData = htInitData;
                 if(!htData){
                     // 초기 사용자 데이터 없음
                     return ;
                 }
                 for (var i in htData){
                     var input = this.$elRoot.find("[name=" + i + "]");
-                    if(i === "profilePhoto"){
+                    if(i === "photourl"){
                         this._fillProfileImage(htData[i]);
                     } else {
                         input.val(htData[i]);
@@ -166,6 +177,7 @@
 
             _fillProfileImage : function(imgUrl){
                 var $preview = this.$elRoot.find(".preview");
+                console.log(imgUrl);
                 $preview.html("<img class='fit' src=" + imgUrl + ">");
             }
         };
@@ -177,7 +189,8 @@
             markdownText
         */
         new ProfileUpdate({
-            elRoot : $("#wrapper").get(0)
+            elRoot : $("#wrapper").get(0),
+            elButton : $(".profileupload").get(0)
 //            htInitData : htInitData
         });
 
