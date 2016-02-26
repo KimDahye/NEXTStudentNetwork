@@ -13,11 +13,6 @@ var data = [{confirm : true, class : "1", name : "넥스트", password : "$2a$08
 
 //if you want to remove all items in table, uncomment this
 db.users.remove({});
+db.users.insert(data);
+db.users.find();
 
-var bulk = db.users.initializeUnorderedBulkOp();
-for (var i = 0; i < data.length; i++) {
-	bulk.insert(data[i]);
-}
-
-bulk.execute();
-db.User.find();
