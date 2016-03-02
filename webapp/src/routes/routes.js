@@ -59,7 +59,8 @@ module.exports = function(app, passport) {
     app.post('/profile/photo', isLoggedIn, function(req, res) {
         var CONSTANT = config.CONSTANT;
         var form = new formidable.IncomingForm();
-        
+        var user = req.user;
+
         form.parse(req, function(err, fields, files) {
             console.log(files);
         });
@@ -67,18 +68,22 @@ module.exports = function(app, passport) {
         form.on('end', function(fields, files) {
             /* Temporary location of our uploaded file */
             var temp_path = this.openedFiles[0].path;
-            /* The file name of the uploaded file */
-            var file_name = this.openedFiles[0].name;
             /* Location where we want to copy the uploaded file */
-            var new_location = './webapp/public/peoples/';          
+            var new_location = './webapp/public/peoples/';  
+            var file_ext = this.openedFiles[0].name.split(".")[1];
+            var file_name = guid()+file_ext; //한글에러처리 피하기 위해 user 마다 겹치지 않게 만들어줌.  
  
             fs.rename(temp_path, new_location + file_name, function(err) {  
                 if (err) {
                     console.error(err);
                     res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_IMAGE_UPLOAD_FAIL});
                 } else {
-                    console.log("success!")
-                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "./peoples/"+file_name}})
+                    console.log("file upload success");
+                    user.profile.photourl ="./peoples/"+file_name;
+                    user.save(function(err){
+                        console.log(user);
+                        res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "./peoples/"+file_name}})
+                    });
                 }
             });
         });
@@ -89,7 +94,8 @@ module.exports = function(app, passport) {
         var CONSTANT = config.CONSTANT;
         var user = req.user;
         console.log(req.body.photourl);
-        user.profile.photourl = (req.body.photourl === undefined) ? "./peoples/sample.png" : req.body.photourl;
+        //복귀해야함.
+        //user.profile.photourl = (req.body.photourl === undefined) ? "./peoples/sample.png" : req.body.photourl;
         user.profile.moto = req.body.moto;
         user.profile.markdown = req.body.markdown;
         user.profile.movieurl = req.body.movieurl;
@@ -188,4 +194,13 @@ function isAdmin(req, res, next) {
 function adminCheck(email) {
     var admins = config.adminlist;
     return (admins.indexOf(email) != -1);
+}
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4();
 }

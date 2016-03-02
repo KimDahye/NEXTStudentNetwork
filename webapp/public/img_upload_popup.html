@@ -10,9 +10,10 @@
     <title>이미지 전송</title>
 </head>
 <body>
-    <form method="get" action="/img_upload_popup_response.html"  enctype="multipart/form-data" name="uploadform">
-        <input type="file" name="imagefile" id="imagefile">
+    <form method="post" action="/profile/photo"  enctype="multipart/form-data" name="uploadform">
+        <input type="file" name="imagefile" id="imagefile"  onchange="handleFiles(this.files)">
     </form>
+    <div class="preview"></div>
     <button>확인</button>
     <script>
         $("button").on("click", $.proxy(function(){
@@ -21,6 +22,44 @@
 //            self.close();
         }, this));
 
+    </script>
+    <script>
+    (function() {
+        var inputElement = document.querySelector("#imagefile");
+        inputElement.addEventListener("change", handleFiles, false);
+    })();
+
+    function handleFiles(files) {
+        var preview = document.querySelector(".preview");
+        if(files.length === 0) {
+            preview.innerHTML = "";
+            return;
+        }
+        
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var imageType = /image.*/;
+
+            if (!file.type.match(imageType)) {
+                continue;
+            }
+
+            var img = document.createElement("img");
+            img.classList.add("attachedImg");
+            img.height = 200;
+            img.file = file;
+            preview.innerHTML="";
+            preview.appendChild(img); // Assuming that "preview" is the div output where the content will be displayed.
+            
+            var reader = new FileReader();
+            reader.onload = (function(aImg) {
+                return function(e) {
+                    aImg.src = e.target.result;
+                };
+            })(img);
+            reader.readAsDataURL(file);
+        }
+    }
     </script>
 </body>
 
