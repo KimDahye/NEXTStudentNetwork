@@ -3,7 +3,7 @@ node_modules/
 .DS_STORE
 *.log
 bower_components/
-
+webapp/public/peoples/
 
 # MAC DS_STORE
 **/.DS_Store

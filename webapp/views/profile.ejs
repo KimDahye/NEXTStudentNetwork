@@ -23,37 +23,58 @@
 <body>
     <header>
     </header>
-
     <div id="wrapper">
         <!-- 개인 프로필 정보 -->
-        <section id="core_info">
-            <form action="/profile">
-                <!-- 사진업로드 -->
-                <input class="fileupload" type="button" name="photourl" value="프로필 사진 업로드"/>
+        <div class="col-sm-6 col-sm-offset-3">
 
-                <!-- 사진미리보기 -->
-                <style>
-                    .preview {
-                        width : 500px;
-                    }
-                    .preview .fit{
-                        width : 100%;
-                    }
+        <section id="core_info" class="respond-form">
+            <form class="form-horizontal" role="form" action="#">
+            <div class="form-group">
+                <label for="moto" class="col-sm-2 control-label">선언문</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="moto" name="moto" placeholder="선언문" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="movieurl" class="col-sm-2 control-label">movie url</label>
+                <div class="col-sm-10">
+                    <input type="movieurl" class="form-control" id="movieurl" name="movieurl" placeholder="유투브 주소" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="markdown" class="col-sm-2 control-label">자기소개</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="markdown" rows="10" name="markdown" placeholder="마크다운으로 자기소개를 작성해주세요."></textarea>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="photourl" class="col-sm-2 control-label">프로필 사진</label>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <input class="imageInput fileupload form-control" type="button" name="photourl" accept="image/*" value="프로필 사진 업로드"/>
+                    <div class="preview"></div>
+                </div>
+            </div>
 
-                </style>
-                <div class="preview"></div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">send</button>
+                </div>
+            </div>
 
-                <!-- 선언문 -->
-                <input type="text" name="moto" placeholder= "선언문" />
-                <!--동영상링크-->
-                <input type="text" name="movieurl" placeholder="유투브 동영상 주소" >              
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <! Will be used to display an alert to the user>
+                </div>
+            </div>
+        </form>
 
-                <!--마크다운-->
-                <textarea name="markdown" placeholder="마크다운"></textarea>
-                <input class="profileupload" type="button" value="등록">
-            </form>
+
+
+
         </section>
-        <!-- //개인 프로필 정보 -->
+    </div>
+    <!-- //개인 프로필 정보 -->
     </div>
     <footer></footer>
 
@@ -61,102 +82,39 @@
         var dataObject = <%-JSON.stringify(user) %>;
 
         var htInitData = {
-            userId : dataObject._id,
-            photourl : dataObject.profile.photourl,
-            moto : dataObject.profile.moto,
-            movieurl: dataObject.profile.movieurl,
-            markdown : dataObject.profile.markdown
+                //userId : dataObject._id,
+                photourl : dataObject.profile.photourl,
+                moto : dataObject.profile.moto,
+                movieurl: dataObject.profile.movieurl,
+                markdown : dataObject.profile.markdown  
         }
-    </script>
 
-    <script>
-
-        var ImagePreview = function(ht){
-            this.init(ht);
-        };
-
-        ImagePreview.prototype = {
-            init : function(ht){
-                this.$elFileUpload = $(ht.elFileUpload);
-                this.$elPreview = $(ht.elPreview);
-
-                this.$elFileUpload.on("click", $.proxy(this._onClickFileUpload, this));
-                // this.$elFileUpload.on("change", $.proxy(this._onChangeFileUpload, this));
+        var profileHelper = {
+            init: function(ht){
+                this._initComponent();
+                this._fillData(); 
+                this.$elFileUpload.addEventListener("click", $.proxy(this._onClickFileUpload, this));
+                this.$elProfileUpdateBtn.addEventListener("click", function(){
+                    $.ajax({
+                        url: "/profile",
+                        type: "PUT",
+                        data: $('#core_info form').serialize(),
+                    }).success(function() {
+                        alert("정상적으로 업로드되었습니다.");
+                    });
+                })
             },
 
             _onClickFileUpload : function(e){
                 console.log("open");
-                window.open("/img_upload_popup.html", "이미지 업로드", "fullscreen=no, width=200, height=200");
+                window.open("/img_upload_popup.html", "이미지 업로드", "fullscreen=no, width=500, height=500");
             },
 
-            //https://jsfiddle.net/0GiS0/Yvgc2/
-            _onChangeFileUpload : function(evt){
-                var oInput = evt.target.files[0];
-                var isNotImage = !oInput.type.match(/^image/);
-
-                if(isNotImage){
-                    alert("이미지 파일만 업로드 해주세요.");
-                    return ;
-                }
-
-                var oReader = new FileReader();
-                $(oReader).on("load", $.proxy(function(e){
-                    var oImageFile = e.target;
-                    var sDataUrl = oImageFile.result;
-                    this._createCanvasImage(sDataUrl);
-                }, this));
-                oReader.readAsDataURL(oInput);
-            },
-
-            _createCanvasImage : function(sDataUrl){
-                var elImage = new Image();
-                elImage.src = sDataUrl;
-                var width = elImage.width;
-                var height = elImage.height;
-
-                elImage.onload = $.proxy(function(){
-                    this.$elPreview.html("");
-                    var elCanvas = document.createElement("canvas");
-                    elCanvas.width = width;
-                    elCanvas.height = height;
-                    var ctx = elCanvas.getContext("2d");
-
-                    ctx.drawImage(elImage,0,0, width, height, 0, 0, width, height);
-                    this.$elPreview.append(elCanvas);
-                    this.$elPreview.find("canvas").addClass("fit")
-                }, this);
-            }
-        };
-
-        var ProfileUpdate = function(ht){
-            this.init(ht);
-        };
-
-        ProfileUpdate.prototype = {
-            init : function(ht){
-                this.option = ht;
-                this.$elRoot = $(ht.elRoot);
-                this.$elButton = $(ht.elButton);
-                this._initComponent();
-                this._fillData();
-                this.$elButton.on("click", $.proxy(function(){
-                    console.log("profile upload button clicked");
-                    $.ajax({
-                      type: "PUT",
-                      url: "/profile",
-                      data: $('#core_info form').serialize(),
-                      success: function(data, textStatus, jqXHR) {
-                        alert('everything was OK');
-                      }
-                    });
-                }));
-            },
-
-            _initComponent : function(){
-                new ImagePreview({
-                    elFileUpload : $(".fileupload"),
-                    elPreview : $(".preview")
-                });
+            _initComponent: function() {
+                this.$elRoot = document.querySelector("#core_info");
+                this.$elProfileUpdateBtn = this.$elRoot.querySelector("#submit");
+                this.$elPreview = this.$elRoot.querySelector(".preview");
+                this.$elFileUpload = this.$elRoot.querySelector(".imageInput");
             },
 
             _fillData : function(){
@@ -166,37 +124,100 @@
                     return ;
                 }
                 for (var i in htData){
-                    var input = this.$elRoot.find("[name=" + i + "]");
+                    var input = this.$elRoot.querySelector("#"+i);
                     if(i === "photourl"){
                         this._fillProfileImage(htData[i]);
                     } else {
-                        input.val(htData[i]);
+                        input.value = htData[i];
                     }
                 }
             },
 
             _fillProfileImage : function(imgUrl){
-                var $preview = this.$elRoot.find(".preview");
+                var $preview = this.$elPreview;
                 console.log(imgUrl);
-                $preview.html("<img class='fit' src=" + imgUrl + ">");
+                $preview.innerHTML = "<img class='fit' src=" + imgUrl + " height='200' >";
+            },
+
+            _getFormData: function(){
+                var form = $('form')[0];
+                return new FormData(form);
             }
+
+
         };
 
-        /*
-            profilePhoto
-            declaration
-            youtubeVid
-            markdownText
-        */
-        new ProfileUpdate({
-            elRoot : $("#wrapper").get(0),
-            elButton : $(".profileupload").get(0)
-//            htInitData : htInitData
+        $(document).ready(function () {
+            profileHelper.init(htInitData);
         });
+    </script>
+    <script>
+    //     var ImagePreview = function(ht){
+    //         this.init(ht);
+    //     };
 
-        function onSavedProfileImage(sFilePath){
-            alert(sFilePath);
-        }
+    //     ImagePreview.prototype = {
+    //         init : function(ht){
+    //             this.$elFileUpload = $(ht.elFileUpload);
+    //             this.$elPreview = $(ht.elPreview);
+    //             // this.$elFileUpload.on("change", $.proxy(this._onChangeFileUpload, this));
+    //         },
+
+    //     var ProfileUpdate = function(ht){
+    //         this.init(ht);
+    //     };
+
+    //     ProfileUpdate.prototype = {
+    //         init : function(ht){
+    //             this.option = ht;
+    //             this.$elRoot = $(ht.elRoot);
+    //             this.$elButton = $(ht.elButton);
+    //             this._initComponent();
+    //             this._fillData();
+    //             this.$elButton.on("click", $.proxy(function(){
+    //                 console.log("profile upload button clicked");
+    //                 $.ajax({
+    //                   type: "PUT",
+    //                   url: "/profile",
+    //                   data: $('#core_info form').serialize(),
+    //                   success: function(data, textStatus, jqXHR) {
+    //                     alert('everything was OK');
+    //                   }
+    //                 });
+    //             }));
+    //         },
+
+    //         _initComponent : function(){
+    //             new ImagePreview({
+    //                 elFileUpload : $(".fileupload"),
+    //                 elPreview : $(".preview")
+    //             });
+    //         },
+
+    //         _fillData : function(){
+    //             var htData = htInitData;
+    //             if(!htData){
+    //                 // 초기 사용자 데이터 없음
+    //                 return ;
+    //             }
+    //             for (var i in htData){
+    //                 var input = this.$elRoot.find("[name=" + i + "]");
+    //                 if(i === "photourl"){
+    //                     this._fillProfileImage(htData[i]);
+    //                 } else {
+    //                     input.val(htData[i]);
+    //                 }
+    //             }
+    //         },
+
+    //         _fillProfileImage : function(imgUrl){
+    //             var $preview = this.$elRoot.find(".preview");
+    //             console.log(imgUrl);
+    //             $preview.html("<img class='fit' src=" + imgUrl + ">");
+    //         }
+    //     };
+
+    // 
     </script>
 </body>
 </html>
