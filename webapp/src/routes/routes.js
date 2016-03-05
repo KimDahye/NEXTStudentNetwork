@@ -114,8 +114,16 @@ module.exports = function(app, passport) {
     // ADMIN API ===========================
     // =====================================
     app.get('/admin', isAdmin, function(req, res) {
-       var CONSTANT = config.CONSTANT;
-       res.render('admin.ejs');
+        User.find({}).sort({"confirm": -1 }).select({"_id":0, "name":1, "email":1, "confirm":1, "profile":1}).exec(function(err, users) {
+            if(err) {
+                console.log(err);
+                res.send(500,'Fail to connect DB');
+            }
+            else {
+                console.log(users);
+                res.render("admin.ejs", {users: users});
+            }
+        });
     });
 
     app.put('/changeStatus', isAdmin, function(req,res) { 
@@ -143,16 +151,32 @@ module.exports = function(app, passport) {
         }
     });
     
+    
+    //GET users
+    //anyone can see all confirmed user data
+    app.get('/users', function(req, res) {
+        var CONSTANT = config.CONSTANT;
+        User.find({"confirm": true}).select({"_id":0, "name":1, "email":1, "profile":1}).exec(function(err, users) {
+            if(err) {
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
+            }
+            else {
+                res.json({users: users});
+            }
+        });
+    });
+    
+    //GET admin/list
     //get all lists of same status
     app.get('/admin/list', isAdmin, function(req,res) { 
         var CONSTANT = config.CONSTANT;
         var status = req.query.confirm =="true";
-
         User.find({"confirm": status}).select({"_id":0, "name":1, "email":1, "confirm":1, "profile":1}).exec(function(err, users) {
             if(err) {
                 res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
-            } else {
-                res.json({"users": users});
+            }
+            else {
+                res.json({users: users});
             }
         });
     });    
@@ -191,11 +215,13 @@ function isAdmin(req, res, next) {
     else return next();        
 }
 
+// check email exists in admin list
 function adminCheck(email) {
     var admins = config.adminlist;
     return (admins.indexOf(email) != -1);
 }
 
+//generate random guid and return it
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
