@@ -7,7 +7,11 @@ var User = require(path.join(SRC_ROOT,'models/user'));
 
 module.exports = function(app, passport) {
 
-    app.get('/', function(req, res) {
+	app.get('/', function(req, res) {
+		res.render('index');
+	});
+	
+    app.get('/login', function(req, res) {
 
         // render the page and pass in any flash data if it exists
         res.render('login.ejs', { message: req.flash('loginMessage') });
