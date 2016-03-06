@@ -1,6 +1,9 @@
+var path = require('path');
 var config = require('getconfig'); 
 var fs = require('fs');
 var formidable = require('formidable');
+var User = require(path.join(SRC_ROOT,'models/user'));
+
 
 module.exports = function(app, passport) {
 
@@ -12,7 +15,7 @@ module.exports = function(app, passport) {
 
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/profile', // redirect to the secure profile section
+    successRedirect : '/admin', // redirect to the secure profile section
     failureRedirect : '/', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
     }));
@@ -56,7 +59,8 @@ module.exports = function(app, passport) {
     app.post('/profile/photo', isLoggedIn, function(req, res) {
         var CONSTANT = config.CONSTANT;
         var form = new formidable.IncomingForm();
-        
+        var user = req.user;
+
         form.parse(req, function(err, fields, files) {
             console.log(files);
         });
@@ -64,18 +68,22 @@ module.exports = function(app, passport) {
         form.on('end', function(fields, files) {
             /* Temporary location of our uploaded file */
             var temp_path = this.openedFiles[0].path;
-            /* The file name of the uploaded file */
-            var file_name = this.openedFiles[0].name;
             /* Location where we want to copy the uploaded file */
-            var new_location = './webapp/public/peoples/';          
+            var new_location = './webapp/public/peoples/';  
+            var file_ext = this.openedFiles[0].name.split(".")[1];
+            var file_name = guid()+file_ext; //한글에러처리 피하기 위해 user 마다 겹치지 않게 만들어줌.  
  
             fs.rename(temp_path, new_location + file_name, function(err) {  
                 if (err) {
                     console.error(err);
                     res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_IMAGE_UPLOAD_FAIL});
                 } else {
-                    console.log("success!")
-                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "./peoples/"+file_name}})
+                    console.log("file upload success");
+                    user.profile.photourl ="./peoples/"+file_name;
+                    user.save(function(err){
+                        console.log(user);
+                        res.json({"status": CONSTANT.STATUS_SUCCESS, "message": {"address": "./peoples/"+file_name}})
+                    });
                 }
             });
         });
@@ -86,7 +94,8 @@ module.exports = function(app, passport) {
         var CONSTANT = config.CONSTANT;
         var user = req.user;
         console.log(req.body.photourl);
-        user.profile.photourl = (req.body.photourl === undefined) ? "./peoples/sample.png" : req.body.photourl;
+        //복귀해야함.
+        //user.profile.photourl = (req.body.photourl === undefined) ? "./peoples/sample.png" : req.body.photourl;
         user.profile.moto = req.body.moto;
         user.profile.markdown = req.body.markdown;
         user.profile.movieurl = req.body.movieurl;
@@ -100,6 +109,77 @@ module.exports = function(app, passport) {
             res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_NON});
         });
     });
+
+    // =====================================
+    // ADMIN API ===========================
+    // =====================================
+    app.get('/admin', isAdmin, function(req, res) {
+        User.find({}).sort({"confirm": -1 }).select({"_id":0, "name":1, "email":1, "confirm":1, "profile":1}).exec(function(err, users) {
+            if(err) {
+                console.log(err);
+                res.send(500,'Fail to connect DB');
+            }
+            else {
+                console.log(users);
+                res.render("admin.ejs", {users: users});
+            }
+        });
+    });
+
+    app.put('/changeStatus', isAdmin, function(req,res) { 
+        var CONSTANT = config.CONSTANT;
+        var targetUser = req.body.target;
+        
+        console.log(targetUser)
+        if (typeof(targetUser) == "undefined") 
+            res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_PARAM});
+        else {
+            console.log("target user: " + targetUser);
+            User.findOne({'email': targetUser}, function(err,user){
+                if(err) {
+                    res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
+                } else if(!user)  {
+                    res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_NOUSER});
+                } else {
+                    console.log("Change status for" + user.email, ", confirm: " + user.confirm);
+                    var confirm = !user.confirm;
+                    user.confirm =  confirm;
+                    user.save();
+                    res.json({"status": CONSTANT.STATUS_SUCCESS, "message": CONSTANT.MESSAGE_CSOK});
+                }
+            });
+        }
+    });
+    
+    
+    //GET users
+    //anyone can see all confirmed user data
+    app.get('/users', function(req, res) {
+        var CONSTANT = config.CONSTANT;
+        User.find({"confirm": true}).select({"_id":0, "name":1, "email":1, "profile":1}).exec(function(err, users) {
+            if(err) {
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
+            }
+            else {
+                res.json({users: users});
+            }
+        });
+    });
+    
+    //GET admin/list
+    //get all lists of same status
+    app.get('/admin/list', isAdmin, function(req,res) { 
+        var CONSTANT = config.CONSTANT;
+        var status = req.query.confirm =="true";
+        User.find({"confirm": status}).select({"_id":0, "name":1, "email":1, "confirm":1, "profile":1}).exec(function(err, users) {
+            if(err) {
+                res.json({"status": CONSTANT.STATUS_FAIL, "message": CONSTANT.MESSAGE_ERROR_DB});
+            }
+            else {
+                res.json({users: users});
+            }
+        });
+    });    
 
     // =====================================
     // LOGOUT ==============================
@@ -119,4 +199,34 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
+}
+
+// route middleware to make sure the user is admin
+function isAdmin(req, res, next) {
+    if (!req.isAuthenticated())
+        res.send(401,'Unauthorized.');
+    else if (!adminCheck(req.user.email)) {
+        if (req.method == "GET")
+            res.redirect('/profile');
+        else
+            res.send(550,'Permission denied.');
+    }
+    //ok, now you are admin!
+    else return next();        
+}
+
+// check email exists in admin list
+function adminCheck(email) {
+    var admins = config.adminlist;
+    return (admins.indexOf(email) != -1);
+}
+
+//generate random guid and return it
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4();
 }
