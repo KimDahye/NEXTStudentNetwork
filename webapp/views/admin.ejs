@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-    <title>NEXTIN profile</title>
+    <title>NEXTIN admin page</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,22 +10,78 @@
     <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
     
     <style>
-        body        { padding-top:80px; word-wrap:break-word; }
+        body { padding-top:80px; word-wrap:break-word; }
     </style>
 
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />    
 
 </head>
 <body>
-    <header>
-    </header>
-
-    <div id="wrapper">
-        <h1>admin page</h1>
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+    <h1><span class="fa fa-child"></span> NEXTIN Admin Page
+      <button id="btn-refresh" type="button" class="btn btn-lg btn-default">Reload <span class="fa fa-refresh"></span></button>      
+    </h1>
+    <h2>Approved List</h2>
+    <div>
+        <table id="approved" class="table">
+        </table>
     </div>
+    <h2>Unapproved List</h2>
+    <div>
+        <table id="not-approved" class="table">
+        </table>
+    </div>
+</div>
+</div>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- DATA SECTION -->
+<script>
+var users = <%- JSON.stringify(users) %>;
+</script>
+
+<!-- JQUERY AJAX SECTION -->
+<script>
+    $( document ).ready(function() {
+        console.log( "document ready!" );
+        var approveButton = '<td><button type="button" class="btn btn-sm btn-success btn-changeStatus">Approve</button></td></tr>\n';
+        var rejectButton = '<td><button type="button" class="btn btn-sm btn-warning btn-changeStatus">Reject</button></td></tr>\n';
+
+        var approved = "";
+        var notApproved = "";
+        for (var i  = 0; i < users.length; i++) {
+            if(users[i].confirm)
+                approved += "<tr><td>" + users[i].email + "</td><td>" + users[i].name + "</td>" + rejectButton;
+            else
+                notApproved += "<tr><td>" + users[i].email + "</td><td>" + users[i].name + "</td>" + approveButton;
+        }
+        $("#approved").html(approved);
+        $("#not-approved").html(notApproved);
         
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        $("#btn-refresh").click(function(){
+            console.log("page reload");
+            location.reload();
+        });
+        
+        $(".btn-changeStatus").click(function(){
+            var email = $(this).parent().parent().children().first().text();
+            console.log("changeStatus btn clicked: " + email );
+            $.ajax({
+                url: '/changeStatus',
+                type: 'PUT',
+                data: 'target=' + email,
+                success: function(response) {
+                    console.log(response);
+                    location.reload();
+                }
+            });
+        });
+        
+    }); //end of ready
+</script>
 </body>
 </html>
