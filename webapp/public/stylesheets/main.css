@@ -24,14 +24,7 @@ blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
     width: 100%;
     margin: 0 auto;
     max-width: 1024px;
-    min-width: 300px;
-    box-sizing: border-box;
-}
-.articleGrid {
-	width: 100%;
-    margin: 0 auto;
-    max-width: 640px;
-    min-width: 300px;
+    min-width: 320px;
     box-sizing: border-box;
 }
 
